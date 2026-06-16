@@ -344,6 +344,8 @@ function build({ quiet = false } = {}) {
 
   rmSync(SITE, { recursive: true, force: true });
   mkdirSync(SITE, { recursive: true });
+  // Disable Jekyll on GitHub Pages so the static files are served verbatim.
+  writeFileSync(join(SITE, '.nojekyll'), '');
   for (const dir of COPY_DIRS) {
     const src = join(ROOT, dir);
     if (existsSync(src)) cpSync(src, join(SITE, dir), { recursive: true });
