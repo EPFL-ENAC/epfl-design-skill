@@ -1,0 +1,16 @@
+{
+  "name": "epfl-design-system",
+  "version": "0.2.0",
+  "private": true,
+  "description": "EPFL Design System — tokens, CSS, fonts, and framework kits. No build is required to USE the system; this package.json exists only for the optional dev-time adherence linters.",
+  "scripts": {
+    "lint": "npm run lint:css && npm run lint:js",
+    "lint:css": "stylelint \"css/**/*.css\" \"kits/**/*.vue\" --config adherence/.stylelintrc.json",
+    "lint:js": "oxlint --config adherence/.oxlintrc.json kits/react examples"
+  },
+  "devDependencies": {
+    "oxlint": "^0.15.0",
+    "postcss-html": "^1.7.0",
+    "stylelint": "^16.10.0"
+  }
+}

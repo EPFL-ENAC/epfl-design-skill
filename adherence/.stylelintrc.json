@@ -1,0 +1,20 @@
+{
+  "rules": {
+    "color-no-hex": true,
+    "unit-disallowed-list": ["px"],
+    "declaration-property-value-allowed-list": {
+      "font-family": ["/Suisse Int'l/", "/^inherit$/", "/var\\(--font/"]
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.vue"],
+      "customSyntax": "postcss-html"
+    }
+  ],
+  "ignoreFiles": [
+    "tokens/**",
+    "**/quasar.variables.scss",
+    "**/epfl-quasar-brand.css"
+  ]
+}

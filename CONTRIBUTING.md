@@ -1,0 +1,72 @@
+# Contributing to the EPFL Design System
+
+This repo is the **single source of truth** for EPFL's web design language, maintained by the team and consumed across projects (agent skills in Claude Code / OpenCode / Cursor, and production Vue/Quasar/Vuetify/React code).
+
+## Golden rules
+
+1. **One change, one PR.** Small and reviewable beats big and perfect.
+2. **Show the pixels.** Every PR that touches visuals includes a screenshot or a link to the rendered `preview/` or `examples/` file.
+3. **Back-port, don't fork.** If you invent a good pattern in a product project, bring it back here so everyone benefits.
+4. **CSS-first.** Build a pattern as canonical CSS in `css/` before wrapping it in any framework kit. The classes are the truth; kits are thin adapters.
+5. **Stay on-brand.** When in doubt, defer to `README.md` (the why) and `AGENTS.md` (the rules).
+6. **No new colors or fonts** without team sign-off. Use the tokens.
+
+## Repo layout
+
+| Path | What it is | Touch it when… |
+|------|-----------|----------------|
+| `AGENTS.md` | Canonical agent rules (CLAUDE.md + Cursor import it) | the workflow or rules change |
+| `README.md` | Brand spec + index | you add a foundation or rule |
+| `tokens/colors_and_type.css` | The token layer (CSS variables + fonts) | you add/adjust a token |
+| `css/` | Canonical atomic CSS (atoms → templates) | new/updated component styling |
+| `kits/` | Framework wrappers (`vue` `quasar` `vuetify` `react` `html`) | a component changes per framework |
+| `assets/` | Logos + icons | new brand asset |
+| `examples/` | ⭐ Real screens the team built | **often — this is how the system grows** |
+| `preview/` | Review cards (one concept each) | you add a component/token worth showcasing |
+| `adherence/` | Brand linters (oxlint + stylelint) | the enforced rules change |
+
+## How to add a token
+
+1. Add the CSS variable to `tokens/colors_and_type.css` under the right section, with a clear comment. Raw color/size values belong **only** in this file.
+2. Reference it from `css/` via `var(--…)`. (The `/* @kind … */` comment is optional human annotation.)
+3. If it's worth showcasing, add/update a card in `preview/`.
+4. Note it in `CHANGELOG.md`.
+
+## How to add a component
+
+1. **Build it in `css/`** under the right atomic level (`atoms/`, `molecules/`, `organisms/`, `templates/`) using tokens only — `rem`, never `px`; `var(--…)`, never hex. Add its `@import` to `css/epfl.css`.
+2. Cover all states: **hover, focus (2px outline), active, disabled.**
+3. Add thin wrappers in the relevant `kits/` (at least `vue/`; export from the kit's `index.js`). Quasar/Vuetify usually need only a brand note, not a rebuild.
+4. Add a `preview/<component>.html` card that links `../css/epfl.css` — **don't re-declare the component's CSS inline.** (First line `<!-- @dsCard group="Components" … -->` is an optional human marker.)
+5. **Run the adherence linter** (see below) until clean. Update the kit `README.md` and `CHANGELOG.md`.
+
+## How to add an example (do this a lot)
+
+`examples/` is the highest-leverage folder. See `examples/README.md`. In short: drop a **self-contained HTML page** of a real screen you built (linking `../css/epfl.css`), add a one-line row to the examples index, done.
+
+## Running the adherence linter
+
+The checks are self-contained in `adherence/` (no external tooling). From the repo root:
+
+```bash
+npx stylelint "css/**/*.css" "kits/**/*.vue" --config adherence/.stylelintrc.json
+npx oxlint --config adherence/.oxlintrc.json kits/react examples
+```
+
+Expect zero raw-hex / raw-px / non-Suisse-font violations. (If a dev `package.json` is present, `npm run lint` runs both.)
+
+## Commit / branch convention
+
+- Branch: `feat/<thing>`, `fix/<thing>`, `docs/<thing>`, `example/<thing>`.
+- Commit messages in the imperative: "Add news-listing example", "Fix focus ring on tertiary button".
+- Tag releases with semver (`v1.2.0`) and summarize in `CHANGELOG.md`.
+
+## Review checklist
+
+- [ ] Pattern exists as canonical CSS in `css/` (kits only wrap it)
+- [ ] Uses tokens, not literals (no raw hex/px); Suisse Int'l only
+- [ ] Sentence case in copy; no emoji
+- [ ] Focus / hover / active / disabled states present
+- [ ] Adherence linter passes
+- [ ] Screenshot or rendered link attached
+- [ ] `CHANGELOG.md` updated

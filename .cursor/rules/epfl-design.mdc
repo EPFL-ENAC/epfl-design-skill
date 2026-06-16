@@ -1,0 +1,28 @@
+---
+description: EPFL Design System — brand rules, tokens, and component kits. Apply when building or styling any UI for EPFL (École polytechnique fédérale de Lausanne).
+globs: ["**/*.vue", "**/*.jsx", "**/*.tsx", "**/*.css", "**/*.scss", "**/*.html"]
+alwaysApply: false
+---
+
+# EPFL Design System (Cursor rule)
+
+The full, canonical rules live in **`AGENTS.md`** at the repo root — read it. This
+rule exists so Cursor surfaces the essentials when editing UI files.
+
+## Always
+
+- Author against design tokens: `var(--primary)`, `var(--fg)`, `var(--space-*)`,
+  `var(--radius)`, `var(--font-sans)`. **No raw hex, no raw `px`** (use `rem` or a
+  token). Raw values live only in `tokens/colors_and_type.css`.
+- Font is **Suisse Int'l** only (Arial fallback is built into `--font-sans`).
+- Use the canonical `.epfl-*` classes from `css/epfl.css`; in framework projects
+  import components from a kit's `index.js` (`kits/vue`, `kits/react`, …), never
+  from internals.
+
+## Never
+
+- No raw colors/px, no fonts other than Suisse Int'l.
+- No emoji, no gradients, no card drop-shadows (borders > shadows), no hover
+  lift/scale, no Title Case (use sentence case).
+
+See `AGENTS.md` and `README.md` for the why and the full spec.
