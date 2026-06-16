@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!-- EPFL example — News listing page. Self-contained, no build: open in a browser.
+     A different page type from research-landing: page header, filter tags, a paged card grid. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EPFL — News</title>
+  <link rel="stylesheet" href="../css/epfl.css">
+  <style>
+    /* page-local layout only — all components come from css/epfl.css */
+    .news-head { padding: var(--space-5) 3rem var(--space-3); }
+    .news-filters { display: flex; gap: var(--space-2); flex-wrap: wrap; padding: 0 3rem var(--space-3); }
+    .news-more { padding: 0 3rem var(--space-6); }
+  </style>
+</head>
+<body>
+  <header class="epfl-header" role="banner">
+    <a class="epfl-logo" href="#"><img src="../assets/svg/epfl-logo.svg" alt="EPFL"></a>
+    <nav class="epfl-nav" aria-label="Main">
+      <a href="#">Education</a>
+      <a href="#">Research</a>
+      <a href="#">Innovation</a>
+      <a href="#">Schools</a>
+      <a href="#">Campus</a>
+    </nav>
+    <div class="epfl-search"><input type="search" placeholder="Search EPFL" aria-label="Search"></div>
+    <div class="epfl-lang"><a class="on">EN</a><a>FR</a><a>DE</a></div>
+  </header>
+
+  <nav class="epfl-breadcrumb" aria-label="Breadcrumb">
+    <a href="#">EPFL</a><span class="sep">›</span>
+    <span>News</span>
+  </nav>
+
+  <div class="news-head">
+    <div class="epfl-eyebrow">Newsroom</div>
+    <h1>News from across the campus</h1>
+    <p class="lead">Research breakthroughs, campus life, and institutional announcements from the seven schools.</p>
+  </div>
+
+  <div class="news-filters">
+    <a class="epfl-tag" href="#">All</a>
+    <a class="epfl-tag" href="#">Research</a>
+    <a class="epfl-tag" href="#">Education</a>
+    <a class="epfl-tag" href="#">Innovation</a>
+    <a class="epfl-tag" href="#">Campus</a>
+    <a class="epfl-tag" href="#">Sustainability</a>
+  </div>
+
+  <section class="epfl-section" style="padding-top: var(--space-2)">
+    <div class="epfl-card-deck">
+      <article class="epfl-card">
+        <div class="epfl-card-img"></div>
+        <div class="epfl-card-body">
+          <div class="epfl-card-info">Research · 12 Mar 2026</div>
+          <h3 class="epfl-card-title">Standardizing perovskite aging measurements</h3>
+          <p class="epfl-card-text">A new protocol will accelerate solar-cell development worldwide.</p>
+        </div>
+      </article>
+      <article class="epfl-card">
+        <div class="epfl-card-img"></div>
+        <div class="epfl-card-body">
+          <div class="epfl-card-info">Innovation · 09 Mar 2026</div>
+          <h3 class="epfl-card-title">Quantum sensors leave the laboratory</h3>
+          <p class="epfl-card-text">A spin-off brings room-temperature quantum sensors to industry.</p>
+        </div>
+      </article>
+      <article class="epfl-card epfl-card-distinction">
+        <div class="epfl-card-img"></div>
+        <span class="epfl-card-flag"></span>
+        <div class="epfl-card-body">
+          <div class="epfl-card-info">Distinction · 06 Mar 2026</div>
+          <h3 class="epfl-card-title">EPFL ranked among top European universities</h3>
+          <p class="epfl-card-text">For the third consecutive year, EPFL holds its place in the top tier.</p>
+        </div>
+      </article>
+      <article class="epfl-card">
+        <div class="epfl-card-img"></div>
+        <div class="epfl-card-body">
+          <div class="epfl-card-info">Campus · 04 Mar 2026</div>
+          <h3 class="epfl-card-title">The Swiss team has won the Solar Decathlon</h3>
+          <p class="epfl-card-text">Students designed and built a net-zero pavilion in nine months.</p>
+        </div>
+      </article>
+      <article class="epfl-card">
+        <div class="epfl-card-img"></div>
+        <div class="epfl-card-body">
+          <div class="epfl-card-info">Education · 01 Mar 2026</div>
+          <h3 class="epfl-card-title">A new master's in quantum science and engineering</h3>
+          <p class="epfl-card-text">Applications open for the autumn 2026 intake across two schools.</p>
+        </div>
+      </article>
+      <article class="epfl-card">
+        <div class="epfl-card-img"></div>
+        <div class="epfl-card-body">
+          <div class="epfl-card-info">Sustainability · 26 Feb 2026</div>
+          <h3 class="epfl-card-title">Mapping alpine glaciers with autonomous drones</h3>
+          <p class="epfl-card-text">A field campaign produces the highest-resolution survey to date.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="news-more">
+    <button class="epfl-btn epfl-btn-secondary">Load more news</button>
+  </div>
+
+  <footer class="epfl-footer">
+    <div class="epfl-footer-top">
+      <img src="../assets/svg/epfl-logo-negative.svg" alt="EPFL" class="epfl-footer-logo">
+      <div class="epfl-footer-cols">
+        <div><h6>About</h6><a href="#">Education</a><a href="#">Research</a><a href="#">Innovation</a><a href="#">Campus</a></div>
+        <div><h6>For students</h6><a href="#">Bachelor</a><a href="#">Master</a><a href="#">PhD</a><a href="#">Continuing</a></div>
+        <div><h6>Contact</h6><a href="#">Directory</a><a href="#">Library</a><a href="#">Press</a><a href="#">Jobs</a></div>
+        <div><h6>Follow</h6><a href="#">LinkedIn</a><a href="#">YouTube</a><a href="#">Bluesky</a><a href="#">Newsletter</a></div>
+      </div>
+    </div>
+    <div class="epfl-footer-bottom">
+      <div>© 2026 EPFL — All rights reserved</div>
+      <div><a href="#">Legal</a> · <a href="#">Privacy</a> · <a href="#">Accessibility</a></div>
+    </div>
+  </footer>
+</body>
+</html>
