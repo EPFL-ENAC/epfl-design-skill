@@ -1,6 +1,9 @@
-# EPFL Design System
+# EPFL Design System — ENAC IT4R
 
-A design system for **EPFL** — École polytechnique fédérale de Lausanne — built from the official `epfl-si/elements` web styleguide ("Charte graphique Web EPFL").
+A design system for building **EPFL**-branded web UI — École polytechnique fédérale de Lausanne — distilled from the official `epfl-si/elements` web styleguide ("Charte graphique Web EPFL").
+
+> [!IMPORTANT]
+> **Unofficial.** This is an internal working reference maintained by the **ENAC IT4R** team at EPFL ENAC (the School of Architecture, Civil and Environmental Engineering). It is **not** produced or endorsed by EPFL's central brand or communications team. For canonical EPFL brand assets, use the official [Elements styleguide](https://epfl-si.github.io/elements) — and when this reference and the official guidelines disagree, the official guidelines win.
 
 ## Source materials
 

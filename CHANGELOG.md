@@ -16,6 +16,7 @@ versions follow [semver](https://semver.org/).
 ### Changed
 - The `@dsCard` comment on a `preview/*.html` card is now **load-bearing** (it feeds the catalog), not an optional marker — documented in `AGENTS.md`, `CONTRIBUTING.md`.
 - `.gitignore` now excludes the generated `site/` and `screenshots/`.
+- **Maintainership made explicit** across the docs, the skill, and the catalog site: this is an *unofficial* reference maintained by the **EPFL ENAC IT4R** team, distilled from `epfl-si/elements` and not produced or endorsed by EPFL's central brand team.
 
 ## [0.2.0] — 2026-06-16
 

@@ -1,6 +1,6 @@
 # Contributing to the EPFL Design System
 
-This repo is the **single source of truth** for EPFL's web design language, maintained by the team and consumed across projects (agent skills in Claude Code / OpenCode / Cursor, and production Vue/Quasar/Vuetify/React code).
+This repo is the **ENAC IT4R** team's shared reference for building EPFL-branded web UI, consumed across our projects (agent skills in Claude Code / OpenCode / Cursor, and production Vue/Quasar/Vuetify/React code). It is maintained by the IT4R team at EPFL ENAC — **unofficial**, distilled from EPFL's official brand guidelines (`epfl-si/elements`), and not produced or endorsed by EPFL's central brand team.
 
 ## Golden rules
 

@@ -1,10 +1,14 @@
 ---
 name: epfl-design
-description: Generates on-brand interfaces, components, and assets for EPFL (École polytechnique fédérale de Lausanne) — production code or throwaway prototypes. Use when building or styling any EPFL UI, working with the EPFL brand/design system, or when the user mentions EPFL pages, components, tokens, colors, or fonts. Ships design tokens, the Suisse Int'l font, framework-agnostic CSS, and Vue/Quasar/Vuetify/React/HTML component kits.
+description: Generates on-brand interfaces, components, and assets for EPFL (École polytechnique fédérale de Lausanne) — production code or throwaway prototypes. Use when building or styling any EPFL UI, working with the EPFL brand/design system, or when the user mentions EPFL pages, components, tokens, colors, or fonts. Ships design tokens, the Suisse Int'l font, framework-agnostic CSS, and Vue/Quasar/Vuetify/React/HTML component kits. Unofficial reference maintained by the EPFL ENAC IT4R team, distilled from EPFL's official guidelines (epfl-si/elements).
 user-invocable: true
 ---
 
 # EPFL Design System
+
+> Unofficial reference maintained by the **ENAC IT4R** team at EPFL ENAC — distilled from
+> EPFL's official brand guidelines (`epfl-si/elements`), not produced or endorsed by EPFL's
+> central brand team. When this reference and the official guidelines disagree, those win.
 
 Read **`AGENTS.md`** first — it holds the operating rules and the enforced brand
 constraints. Then read **`README.md`** for the full content + visual fundamentals

@@ -4,7 +4,7 @@
 
 ## What this repo is
 
-The single source of truth for EPFL's (École polytechnique fédérale de Lausanne) web design language, distilled from the upstream `epfl-si/elements` styleguide. It is consumed three ways:
+The **ENAC IT4R** team's working reference for EPFL's (École polytechnique fédérale de Lausanne) web design language, distilled from the upstream `epfl-si/elements` styleguide. It is maintained by the IT4R team at EPFL ENAC (the School of Architecture, Civil and Environmental Engineering) — **unofficial**, not produced or endorsed by EPFL's central brand team; when it disagrees with the official guidelines, those win. It is consumed three ways:
 
 1. as an **agent skill / design reference** (you, reading these docs to design on-brand);
 2. as a **CSS + font bundle + framework kits** dropped into a real project (Vue/Quasar, Vuetify, React, or plain HTML);
