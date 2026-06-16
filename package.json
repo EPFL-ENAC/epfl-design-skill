@@ -6,10 +6,15 @@
   "scripts": {
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint \"css/**/*.css\" \"kits/**/*.vue\" --config adherence/.stylelintrc.json",
-    "lint:js": "oxlint --config adherence/.oxlintrc.json kits/react examples"
+    "lint:js": "oxlint --config adherence/.oxlintrc.json kits/react examples",
+    "dev": "node scripts/dev.mjs",
+    "build:catalog": "node scripts/build-catalog.mjs",
+    "screenshots": "node scripts/build-catalog.mjs && node scripts/screenshot.mjs",
+    "serve:catalog": "node scripts/build-catalog.mjs && python3 -m http.server --directory site 8080"
   },
   "devDependencies": {
     "oxlint": "^0.15.0",
+    "playwright": "^1.49.0",
     "postcss-html": "^1.7.0",
     "stylelint": "^16.10.0"
   }

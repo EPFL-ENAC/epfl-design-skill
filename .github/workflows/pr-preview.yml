@@ -1,0 +1,84 @@
+name: PR catalog preview
+
+# On every PR: enforce the adherence linter, rebuild the catalog, screenshot each
+# specimen at its @dsCard viewport, upload the shots as an artifact, and post a
+# sticky comment listing what changed. Replaces the manual "show the pixels" step.
+#
+# Note: comments and artifacts only post for PRs from branches in this repo.
+# Fork PRs run with a read-only token, so the sticky comment step is skipped there.
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Adherence linter
+        run: npm run lint
+
+      - name: Build catalog
+        run: node scripts/build-catalog.mjs
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Screenshot specimens
+        run: node scripts/screenshot.mjs
+
+      - name: Upload screenshots
+        id: artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-screenshots
+          path: screenshots/
+          if-no-files-found: error
+
+      - name: Compute changed files
+        id: changed
+        run: |
+          git fetch origin "${{ github.base_ref }}" --depth=1
+          {
+            echo "files<<EOF"
+            git diff --name-only "origin/${{ github.base_ref }}...HEAD"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Build comment body
+        id: body
+        env:
+          CHANGED_FILES: ${{ steps.changed.outputs.files }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ARTIFACT_URL: ${{ steps.artifact.outputs.artifact-url }}
+        run: |
+          {
+            echo "text<<EOF"
+            node scripts/pr-summary.mjs
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Post sticky comment
+        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: catalog-preview
+          message: ${{ steps.body.outputs.text }}

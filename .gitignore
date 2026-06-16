@@ -12,6 +12,10 @@ node_modules/
 dist/
 build/
 
+# Generated catalog + screenshots (rebuilt by scripts/ + CI)
+site/
+screenshots/
+
 # Local env
 .env
 .env.local

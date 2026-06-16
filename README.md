@@ -44,6 +44,7 @@ examples/   full pages (the team's reference library)
 - **The CSS classes are the source of truth.** `css/epfl.css` is the one file to link — it `@import`s the tokens and every atomic layer. A framework **kit** adds no styling; it just maps a framework's ergonomics onto the `.epfl-*` classes.
 - **Pick the kit for your stack** — see [`kits/README.md`](kits/README.md). Vue/Quasar is the primary stack; Vuetify, React, and plain HTML are supported.
 - **Tokens** are plain CSS custom properties: a raw layer (`--epfl-red`, `--epfl-gray-100`…) and semantic aliases (`--primary`, `--fg`, `--space-*`, `--fs-*`, `--radius*`). Author with the semantic tokens.
+- **Browse it live** in the **catalog** — every component, token, and the brand rules in one place: <https://epfl-enac.github.io/epfl-design-skill/>. It is generated from `preview/*.html` by `scripts/build-catalog.mjs` (no build tooling), deployed on merge to `main`, and every PR gets an automatic screenshot artifact + comment. Run it locally with `make dev` (or `npm run dev`) — a live-reloading dev server on `:8080`, zero install. See [`CONTRIBUTING.md`](CONTRIBUTING.md#the-catalog--pr-previews).
 
 ## Index
 
@@ -64,6 +65,8 @@ examples/   full pages (the team's reference library)
 | `examples/`                | Real screens the team has built — study before building. |
 | `preview/`                 | Design-system review cards (one HTML per concept). |
 | `adherence/`               | Self-contained brand linters (oxlint for JS/JSX, stylelint for CSS/Vue). |
+| `scripts/`                 | Catalog generator (`build-catalog.mjs`) + screenshot/PR-summary tooling. |
+| `.github/workflows/`       | CI: deploy the catalog to Pages, and the per-PR screenshot preview. |
 
 ## Content fundamentals
 

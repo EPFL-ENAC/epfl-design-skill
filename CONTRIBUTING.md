@@ -5,7 +5,7 @@ This repo is the **single source of truth** for EPFL's web design language, main
 ## Golden rules
 
 1. **One change, one PR.** Small and reviewable beats big and perfect.
-2. **Show the pixels.** Every PR that touches visuals includes a screenshot or a link to the rendered `preview/` or `examples/` file.
+2. **Show the pixels.** Visuals are reviewed visually. Every PR automatically rebuilds the catalog and uploads a screenshot of each specimen (the `catalog-screenshots` artifact) plus a comment listing what changed — see [The catalog & PR previews](#the-catalog--pr-previews). You don't need to attach screenshots by hand anymore; just check the artifact looks right.
 3. **Back-port, don't fork.** If you invent a good pattern in a product project, bring it back here so everyone benefits.
 4. **CSS-first.** Build a pattern as canonical CSS in `css/` before wrapping it in any framework kit. The classes are the truth; kits are thin adapters.
 5. **Stay on-brand.** When in doubt, defer to `README.md` (the why) and `AGENTS.md` (the rules).
@@ -24,6 +24,8 @@ This repo is the **single source of truth** for EPFL's web design language, main
 | `examples/` | ⭐ Real screens the team built | **often — this is how the system grows** |
 | `preview/` | Review cards (one concept each) | you add a component/token worth showcasing |
 | `adherence/` | Brand linters (oxlint + stylelint) | the enforced rules change |
+| `scripts/` | Catalog generator + screenshot tooling (zero/dev-only deps) | the catalog build or PR preview changes |
+| `.github/` | CI: Pages deploy + PR preview workflows | the deploy or PR-review automation changes |
 
 ## How to add a token
 
@@ -37,7 +39,7 @@ This repo is the **single source of truth** for EPFL's web design language, main
 1. **Build it in `css/`** under the right atomic level (`atoms/`, `molecules/`, `organisms/`, `templates/`) using tokens only — `rem`, never `px`; `var(--…)`, never hex. Add its `@import` to `css/epfl.css`.
 2. Cover all states: **hover, focus (2px outline), active, disabled.**
 3. Add thin wrappers in the relevant `kits/` (at least `vue/`; export from the kit's `index.js`). Quasar/Vuetify usually need only a brand note, not a rebuild.
-4. Add a `preview/<component>.html` card that links `../css/epfl.css` — **don't re-declare the component's CSS inline.** (First line `<!-- @dsCard group="Components" … -->` is an optional human marker.)
+4. Add a `preview/<component>.html` card that links `../css/epfl.css` — **don't re-declare the component's CSS inline.** The first line **must** be a valid `@dsCard` marker — `<!-- @dsCard group="Components" name="…" subtitle="…" viewport="WxH" -->` — it is what puts the card in the published catalog (a card without it is dropped).
 5. **Run the adherence linter** (see below) until clean. Update the kit `README.md` and `CHANGELOG.md`.
 
 ## How to add an example (do this a lot)
@@ -55,6 +57,32 @@ npx oxlint --config adherence/.oxlintrc.json kits/react examples
 
 Expect zero raw-hex / raw-px / non-Suisse-font violations. (If a dev `package.json` is present, `npm run lint` runs both.)
 
+## The catalog & PR previews
+
+The repo ships a small, zero-dependency generator that turns every `preview/*.html`
+card (read via its `@dsCard` comment), the `examples/` index, and the brand rules in
+`AGENTS.md` into one static site — the **catalog**.
+
+- **Look at it locally:** `make dev` (or `npm run dev`) — builds the catalog, serves it
+  on <http://localhost:8080>, and **live-reloads** as you edit any `preview/`, `css/`,
+  `tokens/`, `examples/`, `assets/` file or `AGENTS.md`. Zero install (Node built-ins).
+  Use `PORT=3000 make dev` for a different port. `make` with no target lists everything.
+- **One-off build (no watch):** `npm run build:catalog` writes `site/`; open it directly
+  or `npm run serve:catalog`.
+- **Screenshot everything:** `npm run screenshots` (needs Playwright once:
+  `npx playwright install chromium`) — renders each specimen at its `@dsCard`
+  viewport into `screenshots/`.
+- **Published:** on merge to `main`, `.github/workflows/pages.yml` deploys the catalog
+  to <https://epfl-enac.github.io/epfl-design-skill/> *(one-time: enable repo Settings →
+  Pages → Source: "GitHub Actions")*.
+- **On every PR:** `.github/workflows/pr-preview.yml` runs the linter, rebuilds the
+  catalog, screenshots each specimen, uploads the `catalog-screenshots` artifact, and
+  posts a sticky comment listing the components your PR touched. That **is** "show the
+  pixels" — review the artifact instead of attaching screenshots by hand. (Fork PRs run
+  with a read-only token, so the comment is skipped; the artifact is still produced.)
+
+`site/` and `screenshots/` are generated and git-ignored — never commit them.
+
 ## Commit / branch convention
 
 - Branch: `feat/<thing>`, `fix/<thing>`, `docs/<thing>`, `example/<thing>`.
@@ -67,6 +95,7 @@ Expect zero raw-hex / raw-px / non-Suisse-font violations. (If a dev `package.js
 - [ ] Uses tokens, not literals (no raw hex/px); Suisse Int'l only
 - [ ] Sentence case in copy; no emoji
 - [ ] Focus / hover / active / disabled states present
-- [ ] Adherence linter passes
-- [ ] Screenshot or rendered link attached
+- [ ] Adherence linter passes (also enforced by the PR workflow)
+- [ ] New/changed `preview/` card carries a valid `@dsCard` comment
+- [ ] PR `catalog-screenshots` artifact reviewed and looks right
 - [ ] `CHANGELOG.md` updated

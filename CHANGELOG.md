@@ -6,6 +6,17 @@ versions follow [semver](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- **Published catalog** — `scripts/build-catalog.mjs`, a zero-dependency Node generator that reads the `@dsCard` comments in `preview/*.html`, the `examples/` index, and the brand rules in `AGENTS.md`, and emits a static `site/` gallery (each specimen embedded at its declared viewport; chrome built with `epfl.css` tokens). New npm scripts: `dev`, `build:catalog`, `screenshots`, `serve:catalog`.
+- **Live dev server** — `scripts/dev.mjs` (`npm run dev` / `make dev`): builds, serves on `:8080`, watches the source dirs, and live-reloads the browser via Server-Sent Events. Zero dependencies. A `Makefile` wraps the common tasks (`make help` lists them).
+- **GitHub Pages deploy** — `.github/workflows/pages.yml` publishes the catalog to <https://epfl-enac.github.io/epfl-design-skill/> on push to `main` (one-time: enable Settings → Pages → Source "GitHub Actions").
+- **Per-PR visual preview** — `.github/workflows/pr-preview.yml` runs the adherence linter, rebuilds the catalog, screenshots every specimen with Playwright (`scripts/screenshot.mjs`), uploads the `catalog-screenshots` artifact, and posts a sticky comment listing the touched components (`scripts/pr-summary.mjs`). Replaces the manual "show the pixels" step.
+- `playwright` dev dependency (screenshots only; the generator itself has no deps).
+
+### Changed
+- The `@dsCard` comment on a `preview/*.html` card is now **load-bearing** (it feeds the catalog), not an optional marker — documented in `AGENTS.md`, `CONTRIBUTING.md`.
+- `.gitignore` now excludes the generated `site/` and `screenshots/`.
+
 ## [0.2.0] — 2026-06-16
 
 Restructured into a co-maintained, multi-tool, multi-framework system: CSS-first + atomic, one source of rules across tools, and self-contained tooling.
