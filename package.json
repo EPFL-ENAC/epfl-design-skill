@@ -2,14 +2,22 @@
   "name": "epfl-design-system",
   "version": "0.2.0",
   "private": true,
-  "description": "EPFL Design System — tokens, CSS, fonts, and framework kits. No build is required to USE the system; this package.json exists only for the optional dev-time adherence linters.",
+  "description": "Unofficial EPFL design system maintained by the ENAC IT4R team (distilled from epfl-si/elements; not endorsed by EPFL's central brand team) — tokens, CSS, fonts, and framework kits. No build is required to USE the system; this package.json exists only for the catalog tooling and the optional dev-time adherence linters.",
+  "author": "EPFL ENAC IT4R",
+  "homepage": "https://epfl-enac.github.io/epfl-design-skill/",
+  "repository": "github:EPFL-ENAC/epfl-design-skill",
   "scripts": {
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint \"css/**/*.css\" \"kits/**/*.vue\" --config adherence/.stylelintrc.json",
-    "lint:js": "oxlint --config adherence/.oxlintrc.json kits/react examples"
+    "lint:js": "oxlint --config adherence/.oxlintrc.json kits/react examples",
+    "dev": "node scripts/dev.mjs",
+    "build:catalog": "node scripts/build-catalog.mjs",
+    "screenshots": "node scripts/build-catalog.mjs && node scripts/screenshot.mjs",
+    "serve:catalog": "node scripts/build-catalog.mjs && python3 -m http.server --directory site 8080"
   },
   "devDependencies": {
     "oxlint": "^0.15.0",
+    "playwright": "^1.49.0",
     "postcss-html": "^1.7.0",
     "stylelint": "^16.10.0"
   }

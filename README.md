@@ -1,6 +1,9 @@
-# EPFL Design System
+# EPFL Design System — ENAC IT4R
 
-A design system for **EPFL** — École polytechnique fédérale de Lausanne — built from the official `epfl-si/elements` web styleguide ("Charte graphique Web EPFL").
+A design system for building **EPFL**-branded web UI — École polytechnique fédérale de Lausanne — distilled from the official `epfl-si/elements` web styleguide ("Charte graphique Web EPFL").
+
+> [!IMPORTANT]
+> **Unofficial.** This is an internal working reference maintained by the **ENAC IT4R** team at EPFL ENAC (the School of Architecture, Civil and Environmental Engineering). It is **not** produced or endorsed by EPFL's central brand or communications team. For canonical EPFL brand assets, use the official [Elements styleguide](https://epfl-si.github.io/elements) — and when this reference and the official guidelines disagree, the official guidelines win.
 
 ## Source materials
 
@@ -44,6 +47,7 @@ examples/   full pages (the team's reference library)
 - **The CSS classes are the source of truth.** `css/epfl.css` is the one file to link — it `@import`s the tokens and every atomic layer. A framework **kit** adds no styling; it just maps a framework's ergonomics onto the `.epfl-*` classes.
 - **Pick the kit for your stack** — see [`kits/README.md`](kits/README.md). Vue/Quasar is the primary stack; Vuetify, React, and plain HTML are supported.
 - **Tokens** are plain CSS custom properties: a raw layer (`--epfl-red`, `--epfl-gray-100`…) and semantic aliases (`--primary`, `--fg`, `--space-*`, `--fs-*`, `--radius*`). Author with the semantic tokens.
+- **Browse it live** in the **catalog** — every component, token, and the brand rules in one place: <https://epfl-enac.github.io/epfl-design-skill/>. It is generated from `preview/*.html` by `scripts/build-catalog.mjs` (no build tooling), deployed on merge to `main`, and **every PR gets its own live preview URL** (`…/pr-preview/pr-<N>/`) posted as a comment. Run it locally with `make dev` (or `npm run dev`) — a live-reloading dev server on `:8080`, zero install. See [`CONTRIBUTING.md`](CONTRIBUTING.md#the-catalog--pr-previews).
 
 ## Index
 
@@ -64,6 +68,8 @@ examples/   full pages (the team's reference library)
 | `examples/`                | Real screens the team has built — study before building. |
 | `preview/`                 | Design-system review cards (one HTML per concept). |
 | `adherence/`               | Self-contained brand linters (oxlint for JS/JSX, stylelint for CSS/Vue). |
+| `scripts/`                 | Catalog generator (`build-catalog.mjs`), live dev server (`dev.mjs`), optional screenshots (`screenshot.mjs`). |
+| `.github/workflows/`       | CI: deploy the catalog to Pages, and the per-PR screenshot preview. |
 
 ## Content fundamentals
 

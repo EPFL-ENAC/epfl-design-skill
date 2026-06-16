@@ -4,13 +4,13 @@
 
 ## What this repo is
 
-The single source of truth for EPFL's (École polytechnique fédérale de Lausanne) web design language, distilled from the upstream `epfl-si/elements` styleguide. It is consumed three ways:
+The **ENAC IT4R** team's working reference for EPFL's (École polytechnique fédérale de Lausanne) web design language, distilled from the upstream `epfl-si/elements` styleguide. It is maintained by the IT4R team at EPFL ENAC (the School of Architecture, Civil and Environmental Engineering) — **unofficial**, not produced or endorsed by EPFL's central brand team; when it disagrees with the official guidelines, those win. It is consumed three ways:
 
 1. as an **agent skill / design reference** (you, reading these docs to design on-brand);
 2. as a **CSS + font bundle + framework kits** dropped into a real project (Vue/Quasar, Vuetify, React, or plain HTML);
 3. as **quick-copy assets** for throwaway prototypes.
 
-**No build system is required to use it.** The deliverables are static: tokens CSS, atomic CSS, fonts, SVGs, HTML, and framework component source meant to be copied/imported into the consuming app's own build. To "see" something, open an `examples/*.html` or `preview/*.html` in a browser.
+**No build system is required to use it.** The deliverables are static: tokens CSS, atomic CSS, fonts, SVGs, HTML, and framework component source meant to be copied/imported into the consuming app's own build. To "see" something, open an `examples/*.html` or `preview/*.html` in a browser — or browse the **published catalog** (every component, token, and the brand rules) at <https://epfl-enac.github.io/epfl-design-skill/>. The catalog is generated from the `@dsCard` comments in `preview/*.html` by `scripts/build-catalog.mjs`; every PR gets its own live preview URL (`…/pr-preview/pr-<N>/`) posted as a comment (see `CONTRIBUTING.md`).
 
 ## Read order (do this before generating any EPFL output)
 
@@ -64,7 +64,7 @@ examples/   full pages (the reference library)
 1. Author it in `css/` under the right atomic level, using tokens only.
 2. Cover **hover, focus (2px outline), active, disabled**.
 3. Add the thin wrapper(s) in the relevant `kits/`.
-4. Add a `preview/<name>.html` card (links `../css/epfl.css`, no duplicated CSS).
+4. Add a `preview/<name>.html` card (links `../css/epfl.css`, no duplicated CSS). It **must** start with a valid `@dsCard` comment — `<!-- @dsCard group="…" name="…" subtitle="…" viewport="WxH" -->` — because the published catalog (`scripts/build-catalog.mjs` → GitHub Pages) is generated from it. A card with no `@dsCard` is silently dropped.
 5. Run the adherence linter; fix until clean. Note it in `CHANGELOG.md`.
 
 See `CONTRIBUTING.md` for the full workflow and `tokens/colors_and_type.css` for how to add a token.

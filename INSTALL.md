@@ -4,15 +4,26 @@ This repo is a **single source of truth** you pull into other projects. Pick whi
 
 ## A. As a design/skill reference in an agent tool (Claude Code, OpenCode, Cursor, …)
 
-Drop the repo where the tool looks for skills/rules:
+This repo **is** a skill: `SKILL.md` sits at its root, so dropping the whole repo into a `skills/<name>/` folder registers it. One location works for both Claude Code and OpenCode.
+
+**Per project (shared with your team via the consuming repo's git):**
 
 ```bash
-# Claude Code / OpenCode — into a project's skills dir
-git submodule add git@github.com:epfl-si/design-system.git .claude/skills/epfl-design
+# Read by BOTH Claude Code and OpenCode (OpenCode also scans .claude/skills/)
+git submodule add git@github.com:EPFL-ENAC/epfl-design-skill.git .claude/skills/epfl-design
 git submodule update --remote   # later, to pull updates
 ```
 
-The agent then reads `SKILL.md` → `AGENTS.md` (rules) → `README.md` (spec) and has the tokens, fonts, CSS, kits, assets, and `examples/` to work from.
+**Globally (all your projects, not committed anywhere):**
+
+```bash
+# Claude Code
+git clone git@github.com:EPFL-ENAC/epfl-design-skill.git ~/.claude/skills/epfl-design
+# OpenCode (also accepts ~/.claude/skills/ as a fallback)
+git clone git@github.com:EPFL-ENAC/epfl-design-skill.git ~/.config/opencode/skills/epfl-design
+```
+
+Then invoke it with `/epfl-design`, or just ask for EPFL UI and the agent picks it up. It reads `SKILL.md` → `AGENTS.md` (rules) → `README.md` (spec) and has the tokens, fonts, CSS, kits, assets, and `examples/` to work from.
 
 - **Cursor:** the repo ships `.cursor/rules/epfl-design.mdc`, which points at `AGENTS.md`. Copy that file into the consuming project's `.cursor/rules/`, or vendor the repo so Cursor picks it up.
 - **Any tool that reads `AGENTS.md`** (Codex, Gemini CLI, Windsurf, Zed, …) gets the rules for free. Claude Code reads `CLAUDE.md`, which imports `AGENTS.md`.
@@ -22,7 +33,7 @@ The agent then reads `SKILL.md` → `AGENTS.md` (rules) → `README.md` (spec) a
 Vendor the repo (submodule keeps it updatable):
 
 ```bash
-git submodule add git@github.com:epfl-si/design-system.git vendor/epfl-design
+git submodule add git@github.com:EPFL-ENAC/epfl-design-skill.git vendor/epfl-design
 ```
 
 **1. Load the stylesheet once** (this is all most projects need):

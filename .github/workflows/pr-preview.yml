@@ -1,0 +1,54 @@
+name: PR catalog preview
+
+# On every PR, deploy the rebuilt catalog to a live preview URL and comment it:
+#   https://epfl-enac.github.io/epfl-design-skill/pr-preview/pr-<N>/
+# The preview updates on each push and is removed automatically when the PR closes.
+# This replaces the old "download the screenshots artifact" review step.
+#
+# Note: only same-repo branch PRs can deploy (fork PRs get a read-only token, so the
+# deploy/comment is skipped — build the catalog locally with `make dev` for those).
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        if: github.event.action != 'closed'
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        if: github.event.action != 'closed'
+        run: npm install
+
+      - name: Adherence linter
+        if: github.event.action != 'closed'
+        run: npm run lint
+
+      - name: Build catalog
+        if: github.event.action != 'closed'
+        run: node scripts/build-catalog.mjs
+
+      # Deploys site/ to gh-pages under pr-preview/pr-<N>/ and posts a sticky
+      # comment with the URL; removes the preview on the `closed` event.
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./site/
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
