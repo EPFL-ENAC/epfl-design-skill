@@ -5,7 +5,7 @@ This repo is the **ENAC IT4R** team's shared reference for building EPFL-branded
 ## Golden rules
 
 1. **One change, one PR.** Small and reviewable beats big and perfect.
-2. **Show the pixels.** Visuals are reviewed visually. Every PR automatically rebuilds the catalog and uploads a screenshot of each specimen (the `catalog-screenshots` artifact) plus a comment listing what changed — see [The catalog & PR previews](#the-catalog--pr-previews). You don't need to attach screenshots by hand anymore; just check the artifact looks right.
+2. **Show the pixels.** Visuals are reviewed visually. Every PR automatically rebuilds the catalog and deploys it to a **live preview URL** (posted as a comment on the PR) — see [The catalog & PR previews](#the-catalog--pr-previews). Just click the link and check it renders right; no screenshots to attach.
 3. **Back-port, don't fork.** If you invent a good pattern in a product project, bring it back here so everyone benefits.
 4. **CSS-first.** Build a pattern as canonical CSS in `css/` before wrapping it in any framework kit. The classes are the truth; kits are thin adapters.
 5. **Stay on-brand.** When in doubt, defer to `README.md` (the why) and `AGENTS.md` (the rules).
@@ -69,17 +69,18 @@ card (read via its `@dsCard` comment), the `examples/` index, and the brand rule
   Use `PORT=3000 make dev` for a different port. `make` with no target lists everything.
 - **One-off build (no watch):** `npm run build:catalog` writes `site/`; open it directly
   or `npm run serve:catalog`.
-- **Screenshot everything:** `npm run screenshots` (needs Playwright once:
-  `npx playwright install chromium`) — renders each specimen at its `@dsCard`
-  viewport into `screenshots/`.
-- **Published:** on merge to `main`, `.github/workflows/pages.yml` deploys the catalog
-  to <https://epfl-enac.github.io/epfl-design-skill/> *(one-time: enable repo Settings →
-  Pages → Source: "GitHub Actions")*.
-- **On every PR:** `.github/workflows/pr-preview.yml` runs the linter, rebuilds the
-  catalog, screenshots each specimen, uploads the `catalog-screenshots` artifact, and
-  posts a sticky comment listing the components your PR touched. That **is** "show the
-  pixels" — review the artifact instead of attaching screenshots by hand. (Fork PRs run
-  with a read-only token, so the comment is skipped; the artifact is still produced.)
+- **Published (main):** on merge to `main`, `.github/workflows/pages.yml` deploys the
+  catalog to the `gh-pages` branch root → <https://epfl-enac.github.io/epfl-design-skill/>
+  *(one-time: repo Settings → Pages → Source: "Deploy from a branch" → `gh-pages` / `(root)`)*.
+- **Live preview per PR:** `.github/workflows/pr-preview.yml` runs the linter, rebuilds
+  the catalog, and deploys it to **its own URL** —
+  `https://epfl-enac.github.io/epfl-design-skill/pr-preview/pr-<N>/` — posted as a sticky
+  comment on the PR. It updates on every push and is removed automatically when the PR
+  closes. **That is the review step:** click the link, look at the rendered catalog. (Fork
+  PRs get a read-only token, so no preview is deployed — review those with `make dev` locally.)
+- **Screenshots (optional, local):** `npm run screenshots` (needs Playwright once:
+  `npx playwright install chromium`) renders each specimen at its `@dsCard` viewport into
+  `screenshots/` — handy for slides or asset exports; not part of PR review.
 
 `site/` and `screenshots/` are generated and git-ignored — never commit them.
 
@@ -97,5 +98,5 @@ card (read via its `@dsCard` comment), the `examples/` index, and the brand rule
 - [ ] Focus / hover / active / disabled states present
 - [ ] Adherence linter passes (also enforced by the PR workflow)
 - [ ] New/changed `preview/` card carries a valid `@dsCard` comment
-- [ ] PR `catalog-screenshots` artifact reviewed and looks right
+- [ ] PR preview URL opened and the rendered catalog looks right
 - [ ] `CHANGELOG.md` updated

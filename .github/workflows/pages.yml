@@ -1,7 +1,8 @@
 name: Deploy catalog to Pages
 
-# Publishes the generated catalog to GitHub Pages on every push to main.
-# One-time setup: repo Settings → Pages → Source: "GitHub Actions".
+# Publishes the catalog to the `gh-pages` branch root on every push to main.
+# `clean-exclude: pr-preview/` keeps live per-PR previews intact (see pr-preview.yml).
+# One-time setup: repo Settings → Pages → Source: "Deploy from a branch" → gh-pages / (root).
 
 on:
   push:
@@ -9,21 +10,15 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
-# Allow one concurrent deployment; newer pushes supersede in-flight ones.
 concurrency:
-  group: pages
+  group: pages-deploy
   cancel-in-progress: true
 
 jobs:
-  build-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -32,9 +27,12 @@ jobs:
       # The generator has no dependencies — Node built-ins only.
       - name: Build catalog
         run: node scripts/build-catalog.mjs
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - name: Deploy to gh-pages (root, preserving PR previews)
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: site
-      - id: deploy
-        uses: actions/deploy-pages@v4
+          folder: site
+          branch: gh-pages
+          clean: true
+          clean-exclude: |
+            pr-preview/
+          force: false

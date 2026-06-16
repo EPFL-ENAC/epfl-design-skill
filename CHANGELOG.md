@@ -9,9 +9,10 @@ versions follow [semver](https://semver.org/).
 ### Added
 - **Published catalog** — `scripts/build-catalog.mjs`, a zero-dependency Node generator that reads the `@dsCard` comments in `preview/*.html`, the `examples/` index, and the brand rules in `AGENTS.md`, and emits a static `site/` gallery (each specimen embedded at its declared viewport; chrome built with `epfl.css` tokens). New npm scripts: `dev`, `build:catalog`, `screenshots`, `serve:catalog`.
 - **Live dev server** — `scripts/dev.mjs` (`npm run dev` / `make dev`): builds, serves on `:8080`, watches the source dirs, and live-reloads the browser via Server-Sent Events. Zero dependencies. A `Makefile` wraps the common tasks (`make help` lists them).
-- **GitHub Pages deploy** — `.github/workflows/pages.yml` publishes the catalog to <https://epfl-enac.github.io/epfl-design-skill/> on push to `main` (one-time: enable Settings → Pages → Source "GitHub Actions").
-- **Per-PR visual preview** — `.github/workflows/pr-preview.yml` runs the adherence linter, rebuilds the catalog, screenshots every specimen with Playwright (`scripts/screenshot.mjs`), uploads the `catalog-screenshots` artifact, and posts a sticky comment listing the touched components (`scripts/pr-summary.mjs`). Replaces the manual "show the pixels" step.
-- `playwright` dev dependency (screenshots only; the generator itself has no deps).
+- **GitHub Pages deploy** — `.github/workflows/pages.yml` publishes the catalog to the `gh-pages` branch root → <https://epfl-enac.github.io/epfl-design-skill/> on push to `main` (one-time: Settings → Pages → Source "Deploy from a branch" → `gh-pages` / `(root)`). Uses `clean-exclude: pr-preview/` so it never wipes live PR previews.
+- **Live per-PR preview URL** — `.github/workflows/pr-preview.yml` lints, rebuilds the catalog, and deploys it via `rossjrw/pr-preview-action` to its own URL (`…/pr-preview/pr-<N>/`), posted as a sticky PR comment; updates on each push and is removed when the PR closes. Replaces the manual "show the pixels" step (no screenshot artifact to download).
+- **Optional local screenshots** — `scripts/screenshot.mjs` + `npm run screenshots` (Playwright) renders every specimen to `screenshots/` for slides/exports; no longer part of PR review.
+- `playwright` dev dependency (local screenshots only; the generator itself has no deps).
 
 ### Changed
 - The `@dsCard` comment on a `preview/*.html` card is now **load-bearing** (it feeds the catalog), not an optional marker — documented in `AGENTS.md`, `CONTRIBUTING.md`.

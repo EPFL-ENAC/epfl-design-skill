@@ -10,7 +10,7 @@ The **ENAC IT4R** team's working reference for EPFL's (École polytechnique féd
 2. as a **CSS + font bundle + framework kits** dropped into a real project (Vue/Quasar, Vuetify, React, or plain HTML);
 3. as **quick-copy assets** for throwaway prototypes.
 
-**No build system is required to use it.** The deliverables are static: tokens CSS, atomic CSS, fonts, SVGs, HTML, and framework component source meant to be copied/imported into the consuming app's own build. To "see" something, open an `examples/*.html` or `preview/*.html` in a browser — or browse the **published catalog** (every component, token, and the brand rules) at <https://epfl-enac.github.io/epfl-design-skill/>. The catalog is generated from the `@dsCard` comments in `preview/*.html` by `scripts/build-catalog.mjs`; PRs get an automatic screenshot artifact + comment (see `CONTRIBUTING.md`).
+**No build system is required to use it.** The deliverables are static: tokens CSS, atomic CSS, fonts, SVGs, HTML, and framework component source meant to be copied/imported into the consuming app's own build. To "see" something, open an `examples/*.html` or `preview/*.html` in a browser — or browse the **published catalog** (every component, token, and the brand rules) at <https://epfl-enac.github.io/epfl-design-skill/>. The catalog is generated from the `@dsCard` comments in `preview/*.html` by `scripts/build-catalog.mjs`; every PR gets its own live preview URL (`…/pr-preview/pr-<N>/`) posted as a comment (see `CONTRIBUTING.md`).
 
 ## Read order (do this before generating any EPFL output)
 
