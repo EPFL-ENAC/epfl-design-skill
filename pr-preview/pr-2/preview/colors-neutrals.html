@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Colors" name="Neutrals" subtitle="6-step gray ramp from #E6E6E6 to #212121" viewport="700x170" -->
+<html lang="en"><head><meta charset="utf-8"><title>Colors — Neutrals</title>
+<link rel="stylesheet" href="../css/epfl.css">
+<style>
+  body { margin: 0; padding: 24px; }
+  .row { display: flex; gap: 0; align-items: stretch; border: 1px solid var(--border-subtle); border-radius: var(--radius); overflow: hidden; }
+  .swatch { flex: 1; min-width: 0; }
+  .chip { height: 80px; border-right: 1px solid rgba(255,255,255,.4); }
+  .meta { padding: 8px 10px; font-size: 11px; line-height: 1.35; background: var(--bg); border-right: 1px solid var(--border-subtle); }
+  .swatch:last-child .chip, .swatch:last-child .meta { border-right: 0; }
+  .meta b { display: block; font-size: 11.5px; font-weight: 700; }
+  .meta code { font-family: var(--font-mono); color: var(--fg-muted); font-size: 10px; }
+</style></head>
+<body>
+  <div class="row">
+    <div class="swatch"><div class="chip" style="background:#FFFFFF; border:1px solid var(--border)"></div><div class="meta"><b>White</b><code>#FFFFFF</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#E6E6E6"></div><div class="meta"><b>Gray 100</b><code>#E6E6E6</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#D5D5D5"></div><div class="meta"><b>Gray 200</b><code>#D5D5D5</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#C1C1C1"></div><div class="meta"><b>Gray 300</b><code>#C1C1C1</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#8E8E8E"></div><div class="meta"><b>Gray 500</b><code>#8E8E8E</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#707070"></div><div class="meta"><b>Gray 600</b><code>#707070</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#212121"></div><div class="meta"><b>Black</b><code>#212121</code></div></div>
+  </div>
+</body></html>
