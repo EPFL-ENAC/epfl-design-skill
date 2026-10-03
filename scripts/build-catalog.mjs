@@ -23,7 +23,8 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = join(ROOT, 'site');
-const COPY_DIRS = ['css', 'tokens', 'assets', 'fonts', 'preview', 'examples'];
+// No 'fonts': the catalog is public and Suisse Int'l may not be redistributed (fonts/README.md).
+const COPY_DIRS = ['css', 'tokens', 'assets', 'preview', 'examples'];
 // Foundations first, components last; any unknown group is appended after.
 const GROUP_ORDER = ['Brand', 'Colors', 'Type', 'Spacing', 'Components'];
 

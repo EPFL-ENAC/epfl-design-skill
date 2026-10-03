@@ -62,7 +62,7 @@ examples/   full pages (the team's reference library)
 | `tokens/colors_and_type.css` | The token layer: CSS variables + `@font-face` + element defaults. |
 | `css/`                     | Canonical atomic CSS (`atoms/` `molecules/` `organisms/` `templates/`) + `epfl.css`. |
 | `kits/`                    | Framework wrappers: `vue/` `quasar/` `vuetify/` `react/` `html/`. |
-| `fonts/`                   | Suisse Int'l font files. |
+| `fonts/`                   | Where licensed projects put the Suisse Int'l files (not in git, see `fonts/README.md`). |
 | `assets/svg/`              | EPFL logo (positive + negative), placeholders. |
 | `assets/icons/`            | UI icons + a sample of the bespoke "EPFL" illustrative icon family. |
 | `examples/`                | Real screens the team has built — study before building. |
@@ -100,7 +100,7 @@ EPFL writes like a **Swiss public research university**: precise, civic, calm, n
 
 ### Typography
 
-- **Suisse Int'l** is canonical, fully **bundled** in `fonts/`: Light 300, Regular 400, Medium 500, SemiBold 600, Bold 700, plus Light & Medium italics.
+- **Suisse Int'l** is canonical: Light 300, Regular 400, Medium 500, SemiBold 600, Bold 700, plus Light & Medium italics. It is licensed to EPFL and **not in this repo**: put the files in `fonts/` (see `fonts/README.md`); Arial is the fallback.
 - Scale: 48 / 38 / 28 / 24 / 20 / 18 px. Body 16–18px (clamp). H6 is uppercase.
 - Body line-height 1.5; headings 1.1–1.4. Italics available in Light and Medium.
 
@@ -160,7 +160,7 @@ There's also a `social-icon` atom for brand marks (LinkedIn, YouTube, Bluesky) �
 - **Unicode characters as icons:** rare. The breadcrumb separator is `›` (`\203A`); blockquote uses real curly quotes / guillemets.
 - **Logos:** `assets/svg/epfl-logo.svg` (red on white) and `epfl-logo-negative.svg` (white on dark). The logo is the wordmark "EPFL" plus a small flag glyph; it should never be redrawn.
 
-> **Fonts:** Suisse Int'l is bundled in full (Light, Regular, Medium, SemiBold, Bold + Light/Medium italics). No substitutions.
+> **Fonts:** Suisse Int'l only (Light, Regular, Medium, SemiBold, Bold + Light/Medium italics), supplied by the consuming project under EPFL's licence (`fonts/README.md`); Arial is the sole fallback.
 
 ## Design principles (from `docs/design/index.html`)
 

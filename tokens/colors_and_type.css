@@ -10,10 +10,10 @@
    ============================================================ */
 
 /* ---------- Web fonts ----------
-   Official: Suisse Int'l — fully bundled in /fonts.
-   Weights supplied: Light 300, Regular 400, Medium 500, SemiBold 600, Bold 700.
-   Italics: Light, Medium.
-   Paths are relative to THIS file (tokens/), so fonts/ resolves at repo root.
+   Official: Suisse Int'l — licensed to EPFL, NOT in this repo (see fonts/README.md).
+   Faces: Light 300, Regular 400, Medium 500, SemiBold 600, Bold 700; italics Light, Medium.
+   Paths are relative to THIS file (tokens/): put the licensed files in fonts/ at repo
+   root. Without them, --font-sans falls back to Arial.
 */
 
 @font-face {

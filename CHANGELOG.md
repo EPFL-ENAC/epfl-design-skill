@@ -6,6 +6,9 @@ versions follow [semver](https://semver.org/).
 
 ## [Unreleased]
 
+### Removed
+- **Suisse Int'l font files** (`fonts/*.ttf`). The font is licensed to EPFL and may not be redistributed from a public repository or its public catalog. `@font-face` paths are unchanged: a licensed project puts the files in `fonts/` (git-ignored, see `fonts/README.md`); otherwise `--font-sans` falls back to Arial. The catalog build no longer copies `fonts/`.
+
 ### Added
 - **Published catalog** — `scripts/build-catalog.mjs`, a zero-dependency Node generator that reads the `@dsCard` comments in `preview/*.html`, the `examples/` index, and the brand rules in `AGENTS.md`, and emits a static `site/` gallery (each specimen embedded at its declared viewport; chrome built with `epfl.css` tokens). New npm scripts: `dev`, `build:catalog`, `screenshots`, `serve:catalog`.
 - **Live dev server** — `scripts/dev.mjs` (`npm run dev` / `make dev`): builds, serves on `:8080`, watches the source dirs, and live-reloads the browser via Server-Sent Events. Zero dependencies. A `Makefile` wraps the common tasks (`make help` lists them).

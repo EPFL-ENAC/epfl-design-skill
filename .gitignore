@@ -16,6 +16,10 @@ build/
 site/
 screenshots/
 
+# Suisse Int'l is licensed to EPFL, not redistributable: never commit the files.
+fonts/*
+!fonts/README.md
+
 # Local env
 .env
 .env.local

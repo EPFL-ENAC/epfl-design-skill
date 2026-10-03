@@ -42,7 +42,7 @@ git submodule add git@github.com:EPFL-ENAC/epfl-design-skill.git vendor/epfl-des
 <link rel="stylesheet" href="/vendor/epfl-design/css/epfl.css">
 ```
 
-`css/epfl.css` `@import`s the token layer and every atomic level. Fonts load automatically via `@font-face` in `tokens/colors_and_type.css` — its paths are relative, so **keep `tokens/` next to `fonts/`**. (Need tokens only, no component classes? Link `tokens/colors_and_type.css` instead.)
+`css/epfl.css` `@import`s the token layer and every atomic level. Fonts load via `@font-face` in `tokens/colors_and_type.css` — its paths are relative, so **keep `tokens/` next to `fonts/`**, and put the licensed Suisse Int'l files in `fonts/` (they are not in this repo, see `fonts/README.md`; without them, Arial). (Need tokens only, no component classes? Link `tokens/colors_and_type.css` instead.)
 
 **2. Use components for your framework** (all wrap the same classes — see `kits/README.md`):
 
@@ -61,7 +61,7 @@ Copy `assets/svg/` + `assets/icons/` into your app's public dir (the kits' `logo
 
 ## C. Quick copy (throwaway prototypes / mocks)
 
-Copy `css/`, `tokens/`, `fonts/`, and any `assets/` you reference into your prototype, link `css/epfl.css`, and paste snippets from `kits/html/`. Fastest for one-offs; you lose update-ability.
+Copy `css/`, `tokens/`, `fonts/` (with the licensed font files you hold), and any `assets/` you reference into your prototype, link `css/epfl.css`, and paste snippets from `kits/html/`. Fastest for one-offs; you lose update-ability.
 
 ## Updating
 
