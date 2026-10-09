@@ -46,6 +46,7 @@ examples/   full pages (the reference library)
 - **No raw hex colors.** Use a token: `var(--primary)`, `var(--fg)`, … Raw values live *only* in `tokens/colors_and_type.css` (and framework brand-mapping recipes, which are exempt).
 - **No raw `px`.** Use `rem` or a spacing token (`var(--space-*)`, `var(--gutter)`, `var(--radius)`, `var(--border-w)`). The whole `css/` layer is `rem`-only on purpose.
 - **Only `Suisse Int'l`** as a font family (Arial is the sanctioned fallback, already in `--font-sans`).
+- **Never commit or bundle font files.** Suisse Int'l is licensed to EPFL; pages load it from `https://enac-it-fonts.epfl.ch` (`tokens/fonts.css`), which serves `*.epfl.ch` origins only. A mock opened locally renders in Arial: that is expected, not a bug to fix.
 - **Import kits from `index.js`**, never from internals.
 
 ## Brand rules the linter can't see (from `README.md` — follow them anyway)

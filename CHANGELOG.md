@@ -7,9 +7,10 @@ versions follow [semver](https://semver.org/).
 ## [Unreleased]
 
 ### Removed
-- **Suisse Int'l font files** (`fonts/*.ttf`). The font is licensed to EPFL and may not be redistributed from a public repository or its public catalog. `@font-face` paths are unchanged: a licensed project puts the files in `fonts/` (git-ignored, see `fonts/README.md`); otherwise `--font-sans` falls back to Arial. The catalog build no longer copies `fonts/`.
+- **Suisse Int'l font files** (`fonts/*.ttf`, the desktop fonts) and the `fonts/` directory. The font is licensed to EPFL and may not be redistributed from a public repository or its public catalog. Font files are now git-ignored everywhere, and the catalog build never copies them.
 
 ### Added
+- **`tokens/fonts.css`** — Suisse Int'l `@font-face` from `https://enac-it-fonts.epfl.ch`, the ENAC IT4R font server, which serves `*.epfl.ch` origins only. `tokens/colors_and_type.css` `@import`s it, so `css/epfl.css` keeps loading the font with no setup. Faces: 400, 400 italic, 500, 600, 600 italic, 700 (no Light or Medium italic webfont yet). Off `*.epfl.ch` (localhost, the public catalog) text renders in Arial. `INSTALL.md` → Fonts lists the URLs and shows font-only use with an SCSS or CSS token.
 - **Published catalog** — `scripts/build-catalog.mjs`, a zero-dependency Node generator that reads the `@dsCard` comments in `preview/*.html`, the `examples/` index, and the brand rules in `AGENTS.md`, and emits a static `site/` gallery (each specimen embedded at its declared viewport; chrome built with `epfl.css` tokens). New npm scripts: `dev`, `build:catalog`, `screenshots`, `serve:catalog`.
 - **Live dev server** — `scripts/dev.mjs` (`npm run dev` / `make dev`): builds, serves on `:8080`, watches the source dirs, and live-reloads the browser via Server-Sent Events. Zero dependencies. A `Makefile` wraps the common tasks (`make help` lists them).
 - **GitHub Pages deploy** — `.github/workflows/pages.yml` publishes the catalog to the `gh-pages` branch root → <https://epfl-enac.github.io/epfl-design-skill/> on push to `main` (one-time: Settings → Pages → Source "Deploy from a branch" → `gh-pages` / `(root)`). Uses `clean-exclude: pr-preview/` so it never wipes live PR previews.
@@ -27,6 +28,7 @@ versions follow [semver](https://semver.org/).
 Restructured into a co-maintained, multi-tool, multi-framework system: CSS-first + atomic, one source of rules across tools, and self-contained tooling.
 
 ### Added
+- **`tokens/fonts.css`** — Suisse Int'l `@font-face` from `https://enac-it-fonts.epfl.ch`, the ENAC IT4R font server, which serves `*.epfl.ch` origins only. `tokens/colors_and_type.css` `@import`s it, so `css/epfl.css` keeps loading the font with no setup. Faces: 400, 400 italic, 500, 600, 600 italic, 700 (no Light or Medium italic webfont yet). Off `*.epfl.ch` (localhost, the public catalog) text renders in Arial. `INSTALL.md` → Fonts lists the URLs and shows font-only use with an SCSS or CSS token.
 - **`AGENTS.md`** — canonical, tool-neutral agent operating rules (read by Claude Code, OpenCode, Cursor, Codex, …). `CLAUDE.md` now imports it (`@AGENTS.md`); `.cursor/rules/epfl-design.mdc` points to it.
 - **`css/`** — the canonical component layer as framework-agnostic, atomic CSS (`atoms/` → `molecules/` → `organisms/` → `templates/`), token-pure (`rem` + `var(--…)` only). `css/epfl.css` is the single stylesheet to link.
 - **`kits/`** — thin framework wrappers over `css/`: `vue/` (primary, Vue 3 SFCs + `index.js`), `quasar/` (token→Quasar brand mapping, runtime CSS + build-time Sass), `vuetify/` (theme recipe), `react/` (ES-module components + `index.js`), `html/` (copy-paste snippets).
@@ -50,6 +52,7 @@ Restructured into a co-maintained, multi-tool, multi-framework system: CSS-first
 First assembled version, built from the `epfl-si/elements` styleguide.
 
 ### Added
+- **`tokens/fonts.css`** — Suisse Int'l `@font-face` from `https://enac-it-fonts.epfl.ch`, the ENAC IT4R font server, which serves `*.epfl.ch` origins only. `tokens/colors_and_type.css` `@import`s it, so `css/epfl.css` keeps loading the font with no setup. Faces: 400, 400 italic, 500, 600, 600 italic, 700 (no Light or Medium italic webfont yet). Off `*.epfl.ch` (localhost, the public catalog) text renders in Arial. `INSTALL.md` → Fonts lists the URLs and shows font-only use with an SCSS or CSS token.
 - `colors_and_type.css` — full token layer (85 tokens): brand red (web `#FF0000` + print `#E30713`), Canard/Léman teals, 6-step gray ramp, status colors, type scale (48→18px), spacing, tight 2/4px radii, shadows, motion.
 - **Suisse Int'l** bundled in `fonts/` — Light, Regular, Medium, SemiBold, Bold + Light/Medium italics, wired via `@font-face`.
 - `assets/svg/` — EPFL wordmark (positive + negative), placeholders.

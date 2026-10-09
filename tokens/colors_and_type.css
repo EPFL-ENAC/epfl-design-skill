@@ -10,61 +10,10 @@
    ============================================================ */
 
 /* ---------- Web fonts ----------
-   Official: Suisse Int'l — licensed to EPFL, NOT in this repo (see fonts/README.md).
-   Faces: Light 300, Regular 400, Medium 500, SemiBold 600, Bold 700; italics Light, Medium.
-   Paths are relative to THIS file (tokens/): put the licensed files in fonts/ at repo
-   root. Without them, --font-sans falls back to Arial.
+   Suisse Int'l @font-face rules live in fonts.css: served by
+   enac-it-fonts.epfl.ch to *.epfl.ch sites only, Arial everywhere else.
 */
-
-@font-face {
-  font-family: "Suisse Int'l";
-  src: url("../fonts/SuisseIntl-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Suisse Int'l";
-  src: url("../fonts/SuisseIntl-LightItalic.ttf") format("truetype");
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Suisse Int'l";
-  src: url("../fonts/SuisseIntl-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Suisse Int'l";
-  src: url("../fonts/SuisseIntl-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Suisse Int'l";
-  src: url("../fonts/SuisseIntl-MediumItalic.ttf") format("truetype");
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Suisse Int'l";
-  src: url("../fonts/SuisseIntl-SemiBold.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Suisse Int'l";
-  src: url("../fonts/SuisseIntl-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+@import "fonts.css";
 
 :root {
 
@@ -160,9 +109,10 @@
      TYPE — FAMILIES
      ────────────────────────────────────────────────────────── */
 
-  /* "Suisse Int'l" is the canonical EPFL face, bundled in /fonts via
-     @font-face above. Arial is the brand-sanctioned fallback while the
-     face loads (or if it is ever unavailable). */
+  /* "Suisse Int'l" is the canonical EPFL face (@font-face in fonts.css).
+     Arial is the brand-sanctioned fallback: while the face loads, and on
+     any site outside *.epfl.ch, where the font server refuses it. This is
+     the one token to override to change the stack. */
   --font-sans: "Suisse Int'l", Arial, "Helvetica Neue", Helvetica, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo,
                Monaco, Consolas, monospace;

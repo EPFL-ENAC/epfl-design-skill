@@ -2,7 +2,7 @@
 
 Thin, framework-specific wrappers over the **canonical CSS layer** (`../css/`). The CSS classes are the source of truth; a kit only maps a framework's component ergonomics onto those classes. Same brand, many adapters.
 
-> **Always load `css/epfl.css` once, globally.** Kits carry no styling of their own — they render `epfl-*` classes that `css/epfl.css` defines. (Fonts load via the token layer from `fonts/` next to `tokens/`; the licensed files are not in this repo, see `../fonts/README.md`.)
+> **Always load `css/epfl.css` once, globally.** Kits carry no styling of their own — they render `epfl-*` classes that `css/epfl.css` defines. (Fonts load via the token layer from `enac-it-fonts.epfl.ch`, on `*.epfl.ch` sites only; see `../INSTALL.md` → Fonts.)
 
 | Kit | What it is | Status |
 |-----|-----------|--------|
