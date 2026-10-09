@@ -6,7 +6,11 @@ versions follow [semver](https://semver.org/).
 
 ## [Unreleased]
 
+### Removed
+- **Suisse Int'l font files** (`fonts/*.ttf`, the desktop fonts) and the `fonts/` directory. The font is licensed to EPFL and may not be redistributed from a public repository or its public catalog. Font files are now git-ignored everywhere, and the catalog build never copies them.
+
 ### Added
+- **`tokens/fonts.css`** — Suisse Int'l `@font-face` from `https://enac-it-fonts.epfl.ch`, the ENAC IT4R font server, which serves `*.epfl.ch` origins only. `tokens/colors_and_type.css` `@import`s it, so `css/epfl.css` keeps loading the font with no setup. Faces: 400, 400 italic, 500, 600, 600 italic, 700 (no Light or Medium italic webfont yet). Local dev servers (`http://localhost:*`) get it from the EPFL network or VPN; elsewhere (`file://`, the public catalog, off VPN) text renders in Arial. `INSTALL.md` → Fonts lists the URLs and shows font-only use with an SCSS or CSS token.
 - **Published catalog** — `scripts/build-catalog.mjs`, a zero-dependency Node generator that reads the `@dsCard` comments in `preview/*.html`, the `examples/` index, and the brand rules in `AGENTS.md`, and emits a static `site/` gallery (each specimen embedded at its declared viewport; chrome built with `epfl.css` tokens). New npm scripts: `dev`, `build:catalog`, `screenshots`, `serve:catalog`.
 - **Live dev server** — `scripts/dev.mjs` (`npm run dev` / `make dev`): builds, serves on `:8080`, watches the source dirs, and live-reloads the browser via Server-Sent Events. Zero dependencies. A `Makefile` wraps the common tasks (`make help` lists them).
 - **GitHub Pages deploy** — `.github/workflows/pages.yml` publishes the catalog to the `gh-pages` branch root → <https://epfl-enac.github.io/epfl-design-skill/> on push to `main` (one-time: Settings → Pages → Source "Deploy from a branch" → `gh-pages` / `(root)`). Uses `clean-exclude: pr-preview/` so it never wipes live PR previews.

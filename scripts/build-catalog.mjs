@@ -23,7 +23,9 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = join(ROOT, 'site');
-const COPY_DIRS = ['css', 'tokens', 'assets', 'fonts', 'preview', 'examples'];
+// The catalog is public: it never holds font files. Its pages load Suisse Int'l
+// from enac-it-fonts.epfl.ch (tokens/fonts.css), which refuses github.io → Arial.
+const COPY_DIRS = ['css', 'tokens', 'assets', 'preview', 'examples'];
 // Foundations first, components last; any unknown group is appended after.
 const GROUP_ORDER = ['Brand', 'Colors', 'Type', 'Spacing', 'Components'];
 

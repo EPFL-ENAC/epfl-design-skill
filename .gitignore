@@ -16,6 +16,14 @@ build/
 site/
 screenshots/
 
+# Suisse Int'l is licensed to EPFL, not redistributable: never commit font
+# files. Pages load it from enac-it-fonts.epfl.ch (tokens/fonts.css).
+*.ttf
+*.otf
+*.woff
+*.woff2
+*.eot
+
 # Local env
 .env
 .env.local

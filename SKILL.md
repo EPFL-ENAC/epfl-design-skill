@@ -1,6 +1,6 @@
 ---
 name: epfl-design
-description: Generates on-brand interfaces, components, and assets for EPFL (École polytechnique fédérale de Lausanne) — production code or throwaway prototypes. Use when building or styling any EPFL UI, working with the EPFL brand/design system, or when the user mentions EPFL pages, components, tokens, colors, or fonts. Ships design tokens, the Suisse Int'l font, framework-agnostic CSS, and Vue/Quasar/Vuetify/React/HTML component kits. Unofficial reference maintained by the EPFL ENAC IT4R team, distilled from EPFL's official guidelines (epfl-si/elements).
+description: Generates on-brand interfaces, components, and assets for EPFL (École polytechnique fédérale de Lausanne) — production code or throwaway prototypes. Use when building or styling any EPFL UI, working with the EPFL brand/design system, or when the user mentions EPFL pages, components, tokens, colors, or fonts. Ships design tokens, the Suisse Int'l webfont setup, framework-agnostic CSS, and Vue/Quasar/Vuetify/React/HTML component kits. Unofficial reference maintained by the EPFL ENAC IT4R team, distilled from EPFL's official guidelines (epfl-si/elements).
 user-invocable: true
 ---
 
@@ -28,7 +28,8 @@ questions, and act as an expert EPFL designer.
 ## Quick reference (hard rules)
 
 - Tokens only — **no raw hex, no raw `px`** (use `var(--…)` or `rem`).
-- Font: **Suisse Int'l** → Arial fallback (built into `--font-sans`).
+- Font: **Suisse Int'l** → Arial fallback (built into `--font-sans`). It loads from
+  `enac-it-fonts.epfl.ch` on `*.epfl.ch` sites only: never add font files to a project.
 - Primary red `#FF0000` / `#B51F1F` hover (web). Print red is `#E30713` — don't mix.
 - Tertiary teal `#007480` (Canard). Heading/button case: **sentence case**, never Title Case.
 - **No emoji. No gradients. No card drop-shadows.** Borders > shadows. Tight 2px radii.
