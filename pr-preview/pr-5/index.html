@@ -54,7 +54,7 @@
           <li><strong>No raw hex colors.</strong> Use a token: <code>var(--primary)</code>, <code>var(--fg)</code>, … Raw values live <em>only</em> in <code>tokens/colors_and_type.css</code> (and framework brand-mapping recipes, which are exempt).</li>
           <li><strong>No raw <code>px</code>.</strong> Use <code>rem</code> or a spacing token (<code>var(--space-*)</code>, <code>var(--gutter)</code>, <code>var(--radius)</code>, <code>var(--border-w)</code>). The whole <code>css/</code> layer is <code>rem</code>-only on purpose.</li>
           <li><strong>Only <code>Suisse Int'l</code></strong> as a font family (Arial is the sanctioned fallback, already in <code>--font-sans</code>).</li>
-          <li><strong>Never commit or bundle font files.</strong> Suisse Int'l is licensed to EPFL; pages load it from <code>https://enac-it-fonts.epfl.ch</code> (<code>tokens/fonts.css</code>), which serves <code>*.epfl.ch</code> origins only. A mock opened locally renders in Arial: that is expected, not a bug to fix.</li>
+          <li><strong>Never commit or bundle font files.</strong> Suisse Int'l is licensed to EPFL; pages load it from <code>https://enac-it-fonts.epfl.ch</code> (<code>tokens/fonts.css</code>), which serves <code>*.epfl.ch</code> origins, and <code>localhost</code> dev servers on the EPFL network or VPN. A mock opened as a file, or off VPN, renders in Arial: that is expected, not a bug to fix.</li>
           <li><strong>Import kits from <code>index.js</code></strong>, never from internals.</li>
           </ul>
         </div>
