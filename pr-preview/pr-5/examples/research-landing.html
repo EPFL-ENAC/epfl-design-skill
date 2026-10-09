@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!-- EPFL example — Research landing page. Self-contained, no build: open in a browser.
+     The canonical reference screen: header, signature hero, card deck, key numbers, footer. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EPFL — Research</title>
+  <link rel="stylesheet" href="../css/epfl.css">
+</head>
+<body>
+  <header class="epfl-header" role="banner">
+    <a class="epfl-logo" href="#"><img src="../assets/svg/epfl-logo.svg" alt="EPFL"></a>
+    <nav class="epfl-nav" aria-label="Main">
+      <a href="#">Education</a>
+      <a href="#" class="active">Research</a>
+      <a href="#">Innovation</a>
+      <a href="#">Schools</a>
+      <a href="#">Campus</a>
+    </nav>
+    <div class="epfl-search"><input type="search" placeholder="Search EPFL" aria-label="Search"></div>
+    <div class="epfl-lang"><a class="on">EN</a><a>FR</a><a>DE</a></div>
+  </header>
+
+  <nav class="epfl-breadcrumb" aria-label="Breadcrumb">
+    <a href="#">EPFL</a><span class="sep">›</span>
+    <a href="#">Research</a><span class="sep">›</span>
+    <span>Highlights</span>
+  </nav>
+
+  <section class="epfl-hero">
+    <div class="epfl-hero-text">
+      <h1 class="epfl-hero-title">Pioneering research, made in Switzerland</h1>
+      <div class="epfl-hero-content">
+        <p>EPFL is one of the most vibrant and cosmopolitan science and technology institutions in Europe. With over 350 laboratories spanning seven schools, the school advances knowledge across engineering, basic sciences, life sciences, and architecture.</p>
+        <p style="margin-top: var(--space-4)">
+          <button class="epfl-btn epfl-btn-primary">Discover our research</button>
+          <button class="epfl-btn epfl-btn-secondary">Browse labs</button>
+        </p>
+      </div>
+    </div>
+    <div class="epfl-hero-img" role="img" aria-label="Researchers at EPFL"
+         style="background-image:url(https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=1600&q=80)"></div>
+  </section>
+
+  <section class="epfl-section">
+    <div class="epfl-eyebrow">Latest news</div>
+    <h2>Highlights from our laboratories</h2>
+    <div class="epfl-card-deck">
+      <article class="epfl-card epfl-card-distinction">
+        <div class="epfl-card-img" style="background-image:url(https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=900&q=80)"></div>
+        <span class="epfl-card-flag"></span>
+        <div class="epfl-card-body">
+          <div class="epfl-card-info">News · 12 Mar 2026</div>
+          <h3 class="epfl-card-title">Standardizing perovskite aging measurements</h3>
+          <p class="epfl-card-text">Researchers establish a new protocol that will accelerate solar-cell development worldwide.</p>
+        </div>
+      </article>
+      <article class="epfl-card">
+        <div class="epfl-card-img" style="background-image:url(https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900&q=80)"></div>
+        <div class="epfl-card-body">
+          <div class="epfl-card-info">Research · 04 Mar 2026</div>
+          <h3 class="epfl-card-title">The Swiss team has won the Solar Decathlon</h3>
+          <p class="epfl-card-text">A multidisciplinary student group designed and built a net-zero pavilion in just under nine months.</p>
+        </div>
+      </article>
+      <article class="epfl-card">
+        <div class="epfl-card-img" style="background-image:url(https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=900&q=80)"></div>
+        <div class="epfl-card-body">
+          <div class="epfl-card-info">Innovation · 28 Feb 2026</div>
+          <h3 class="epfl-card-title">Quantum sensors leave the laboratory</h3>
+          <p class="epfl-card-text">A spin-off founded at EPFL is bringing room-temperature quantum sensors to industrial users.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="epfl-section epfl-section-muted">
+    <div class="epfl-eyebrow">Key numbers</div>
+    <h2>EPFL at a glance</h2>
+    <div class="epfl-keynumbers">
+      <div class="epfl-keynumber">
+        <div class="epfl-keynumber-num"><span class="pre">+</span>13 000</div>
+        <div class="epfl-keynumber-bar"></div>
+        <div class="epfl-keynumber-label">Students from over 120 countries</div>
+      </div>
+      <div class="epfl-keynumber">
+        <div class="epfl-keynumber-num">350</div>
+        <div class="epfl-keynumber-bar"></div>
+        <div class="epfl-keynumber-label">Research labs across seven schools</div>
+      </div>
+      <div class="epfl-keynumber">
+        <div class="epfl-keynumber-num">3</div>
+        <div class="epfl-keynumber-bar"></div>
+        <div class="epfl-keynumber-label">Missions: Education · Research · Innovation</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="epfl-footer">
+    <div class="epfl-footer-top">
+      <img src="../assets/svg/epfl-logo-negative.svg" alt="EPFL" class="epfl-footer-logo">
+      <div class="epfl-footer-cols">
+        <div><h6>About</h6><a href="#">Education</a><a href="#">Research</a><a href="#">Innovation</a><a href="#">Campus</a></div>
+        <div><h6>For students</h6><a href="#">Bachelor</a><a href="#">Master</a><a href="#">PhD</a><a href="#">Continuing</a></div>
+        <div><h6>Contact</h6><a href="#">Directory</a><a href="#">Library</a><a href="#">Press</a><a href="#">Jobs</a></div>
+        <div><h6>Follow</h6><a href="#">LinkedIn</a><a href="#">YouTube</a><a href="#">Bluesky</a><a href="#">Newsletter</a></div>
+      </div>
+    </div>
+    <div class="epfl-footer-bottom">
+      <div>© 2026 EPFL — All rights reserved</div>
+      <div><a href="#">Legal</a> · <a href="#">Privacy</a> · <a href="#">Accessibility</a></div>
+    </div>
+  </footer>
+</body>
+</html>
