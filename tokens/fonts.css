@@ -2,10 +2,12 @@
    EPFL Design System — Suisse Int'l webfonts
    Served by https://enac-it-fonts.epfl.ch (EPFL ENAC IT4R) to *.epfl.ch
    sites only: EPFL's Swiss Typefaces licence covers @font-face use on the
-   epfl.ch domain, nowhere else. On any other origin (localhost, file://,
-   github.io, another domain) the server answers 403 and text renders in
-   the --font-sans fallback, Arial. That is expected: never copy the font
-   files into a project to "fix" it.
+   epfl.ch domain. A local dev server (http://localhost:<port>,
+   http://127.0.0.1:<port>) gets the fonts too, from the EPFL network or
+   VPN only. Anywhere else (file://, github.io, another domain, off VPN)
+   the server answers 403 and text renders in the --font-sans fallback,
+   Arial. That is expected: never copy the font files into a project to
+   "fix" it.
 
    tokens/colors_and_type.css @imports this file, so css/epfl.css loads it.
    Need only the font (no tokens)? Import this file alone and set

@@ -65,9 +65,10 @@ Suisse Int'l is licensed to EPFL by Swiss Typefaces: free on the web for sites
 under `epfl.ch`, only as the delivered webfont files, only through `@font-face`.
 So the files are not in this repo. ENAC IT4R serves them from
 `https://enac-it-fonts.epfl.ch`, which answers only requests whose `Origin` is
-`https://epfl.ch` or `https://<anything>.epfl.ch`. Anywhere else (localhost,
-`file://`, the public catalog, another domain) it answers 403 and text falls
-back to Arial. Check the real font on a deployed `*.epfl.ch` environment.
+`https://epfl.ch` or `https://<anything>.epfl.ch`, plus a local dev server
+(`http://localhost:<port>`, `http://127.0.0.1:<port>`) when you are on the EPFL
+network or VPN. Anywhere else (`file://`, the public catalog, another domain,
+off VPN) it answers 403 and text falls back to Arial.
 
 | URL | Weight | Style |
 |---|---|---|
@@ -124,7 +125,7 @@ font server replaces.
 
 ## C. Quick copy (throwaway prototypes / mocks)
 
-Copy `css/`, `tokens/`, and any `assets/` you reference into your prototype, link `css/epfl.css`, and paste snippets from `kits/html/`. Fastest for one-offs; you lose update-ability. Opened locally it renders in Arial (see [Fonts](#fonts)).
+Copy `css/`, `tokens/`, and any `assets/` you reference into your prototype, link `css/epfl.css`, and paste snippets from `kits/html/`. Fastest for one-offs; you lose update-ability. Opened as a file it renders in Arial; served from `localhost` on the EPFL network or VPN it gets Suisse Int'l (see [Fonts](#fonts)).
 
 ## Updating
 
