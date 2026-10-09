@@ -82,6 +82,13 @@ off VPN) it answers 403 and text falls back to Arial.
 No Light (300) or Medium italic webfont yet: the browser uses the nearest face.
 `tokens/fonts.css` declares all six faces and is the file to copy from.
 
+Each face also exists as a Latin subset: replace `-WebS.woff2` with
+`-WebS-latin.woff2` (for example `SuisseIntl-Regular-WebS-latin.woff2`). It
+covers Basic Latin, Latin-1 (fr, en, de, es, it), Œ œ, dashes, curly quotes,
+guillemets, bullet, ellipsis, € and −, in about 13 KB instead of 17 KB; any
+other character renders in the next font of the stack. `tokens/fonts.css`
+uses the full files; switch in your own copy only if the 4 KB per face matter.
+
 **With the design system:** nothing to do. `css/epfl.css` (or
 `tokens/colors_and_type.css`) loads `tokens/fonts.css`, and every element uses
 `var(--font-sans)`.
