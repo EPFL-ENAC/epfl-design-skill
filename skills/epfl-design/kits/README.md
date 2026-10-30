@@ -2,7 +2,7 @@
 
 Thin, framework-specific wrappers over the **canonical CSS layer** (`../css/`). The CSS classes are the source of truth; a kit only maps a framework's component ergonomics onto those classes. Same brand, many adapters.
 
-> **Always load `css/epfl.css` once, globally.** Kits carry no styling of their own — they render `epfl-*` classes that `css/epfl.css` defines. (Fonts load via the token layer from `enac-it-fonts.epfl.ch`, on `*.epfl.ch` sites only; see `../INSTALL.md` → Fonts.)
+> **Always load `css/epfl.css` once, globally.** Kits carry no styling of their own — they render `epfl-*` classes that `css/epfl.css` defines. (Fonts load via the token layer from `enac-it-fonts.epfl.ch`, on `*.epfl.ch` sites only; see `../tokens/fonts.css`.)
 
 | Kit | What it is | Status |
 |-----|-----------|--------|
@@ -25,4 +25,4 @@ Import from a kit's **`index.js`** (its public entry), never reach into componen
 
 ## Adding to a kit
 
-Build the pattern in `../css/` **first** (it must work as plain classes), then add the thin wrapper here. Cover hover / focus / active / disabled. See `../CONTRIBUTING.md`.
+Build the pattern in `../css/` **first** (it must work as plain classes), then add the thin wrapper here. Cover hover / focus / active / disabled. See `../rules.md`.

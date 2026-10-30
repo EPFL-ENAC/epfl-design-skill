@@ -1,40 +1,23 @@
-# Install & use
+# Install & use in a project
 
-This repo is a **single source of truth** you pull into other projects. Pick whichever method fits the consuming project.
+To install the **agent skill** (Claude Code plugin, claude.ai upload, Codex/OpenCode),
+see the [README](README.md#install). This file covers wiring the design system's CSS,
+tokens and kits into a real project.
 
-## A. As a design/skill reference in an agent tool (Claude Code, OpenCode, Cursor, …)
+Every path below is relative to the skill folder: `skills/epfl-design/` in this repo,
+`vendor/epfl-design/` once unzipped into a project.
 
-This repo **is** a skill: `SKILL.md` sits at its root, so dropping the whole repo into a `skills/<name>/` folder registers it. One location works for both Claude Code and OpenCode.
+## A. In a production web project
 
-**Per project (shared with your team via the consuming repo's git):**
-
-```bash
-# Read by BOTH Claude Code and OpenCode (OpenCode also scans .claude/skills/)
-git submodule add git@github.com:EPFL-ENAC/epfl-design-skill.git .claude/skills/epfl-design
-git submodule update --remote   # later, to pull updates
-```
-
-**Globally (all your projects, not committed anywhere):**
+Unzip the release archive into the project, once per update:
 
 ```bash
-# Claude Code
-git clone git@github.com:EPFL-ENAC/epfl-design-skill.git ~/.claude/skills/epfl-design
-# OpenCode (also accepts ~/.claude/skills/ as a fallback)
-git clone git@github.com:EPFL-ENAC/epfl-design-skill.git ~/.config/opencode/skills/epfl-design
+curl -fsSL https://github.com/EPFL-ENAC/epfl-design-skill/releases/latest/download/epfl-design.zip -o /tmp/epfl-design.zip
+unzip -o /tmp/epfl-design.zip -d vendor/    # → vendor/epfl-design/
 ```
 
-Then invoke it with `/epfl-design`, or just ask for EPFL UI and the agent picks it up. It reads `SKILL.md` → `AGENTS.md` (rules) → `README.md` (spec) and has the tokens, fonts, CSS, kits, assets, and `examples/` to work from.
-
-- **Cursor:** the repo ships `.cursor/rules/epfl-design.mdc`, which points at `AGENTS.md`. Copy that file into the consuming project's `.cursor/rules/`, or vendor the repo so Cursor picks it up.
-- **Any tool that reads `AGENTS.md`** (Codex, Gemini CLI, Windsurf, Zed, …) gets the rules for free. Claude Code reads `CLAUDE.md`, which imports `AGENTS.md`.
-
-## B. In a production web project
-
-Vendor the repo (submodule keeps it updatable):
-
-```bash
-git submodule add git@github.com:EPFL-ENAC/epfl-design-skill.git vendor/epfl-design
-```
+Pin a version by replacing `latest/download` with `download/vX.Y.Z`, and commit
+`vendor/epfl-design/` so the build never depends on the network.
 
 **1. Load the stylesheet once** (this is all most projects need):
 
@@ -130,14 +113,14 @@ it the browser sends no `Origin` and the server answers 403.
 Never copy the font files into a project, public or private: that is what the
 font server replaces.
 
-## C. Quick copy (throwaway prototypes / mocks)
+## B. Quick copy (throwaway prototypes / mocks)
 
-Copy `css/`, `tokens/`, and any `assets/` you reference into your prototype, link `css/epfl.css`, and paste snippets from `kits/html/`. Fastest for one-offs; you lose update-ability. Opened as a file it renders in Arial; served from `localhost` on the EPFL network or VPN it gets Suisse Int'l (see [Fonts](#fonts)).
+Unzip the archive as above, or copy `css/`, `tokens/`, and any `assets/` you reference into your prototype, link `css/epfl.css`, and paste snippets from `kits/html/`. Fastest for one-offs; you lose update-ability. Opened as a file it renders in Arial; served from `localhost` on the EPFL network or VPN it gets Suisse Int'l (see [Fonts](#fonts)).
 
 ## Updating
 
-- Submodule consumers: `git submodule update --remote && git commit`.
-- Pin to a tagged release for stability, or track `main` for the latest.
+- Rerun the `curl` + `unzip` lines (with a new version for a pinned project), review
+  the diff of `vendor/epfl-design/`, commit.
 
 ## Keeping it healthy
 

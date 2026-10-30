@@ -1,0 +1,12 @@
+{
+  "name": "epfl",
+  "version": "0.3.0",
+  "description": "EPFL design system for AI agents: brand rules and spec, tokens, atomic CSS, Vue/Quasar/Vuetify/React/HTML kits and logos. Unofficial, by EPFL ENAC IT4R.",
+  "author": {
+    "name": "EPFL ENAC IT4R",
+    "url": "https://github.com/EPFL-ENAC"
+  },
+  "homepage": "https://github.com/EPFL-ENAC/epfl-design-skill",
+  "repository": "https://github.com/EPFL-ENAC/epfl-design-skill",
+  "skills": "./skills/"
+}
