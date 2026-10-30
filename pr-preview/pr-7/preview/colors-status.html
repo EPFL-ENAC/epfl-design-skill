@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Colors" name="Status colors" subtitle="Success / info / warning / danger" viewport="700x160" -->
+<html lang="en"><head><meta charset="utf-8"><title>Colors — Status</title>
+<link rel="stylesheet" href="../skills/epfl-design/css/epfl.css">
+<style>
+  body { margin: 0; padding: 24px; font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .swatch { border: 1px solid var(--border-subtle); border-radius: var(--radius); overflow: hidden; }
+  .chip { height: 60px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 700; }
+  .meta { padding: 8px 10px; font-size: 11px; }
+  .meta b { display: block; font-size: 12px; }
+  .meta code { font-family: var(--font-mono); color: var(--fg-muted); font-size: 10.5px; }
+</style></head>
+<body>
+  <div class="grid">
+    <div class="swatch"><div class="chip" style="background:#7ED321">Success</div><div class="meta"><b>Success</b><code>#7ED321</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#4A90E2">Info</div><div class="meta"><b>Info</b><code>#4A90E2</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#F5A623">Warning</div><div class="meta"><b>Warning</b><code>#F5A623</code></div></div>
+    <div class="swatch"><div class="chip" style="background:#FF0000">Danger</div><div class="meta"><b>Danger</b><code>#FF0000</code></div></div>
+  </div>
+</body></html>

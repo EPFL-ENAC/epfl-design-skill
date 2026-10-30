@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Cards" subtitle="News card and distinction card with red flag" viewport="700x320" -->
+<html lang="en"><head><meta charset="utf-8"><title>Card</title>
+<link rel="stylesheet" href="../skills/epfl-design/css/epfl.css">
+<style>
+  body { margin: 0; padding: var(--space-4); background: var(--bg-subtle); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); }
+  .epfl-card-img { background: var(--epfl-gray-200); } /* demo placeholder fill */
+</style></head>
+<body>
+  <div class="row">
+    <article class="epfl-card">
+      <div class="epfl-card-img"></div>
+      <div class="epfl-card-body">
+        <div class="epfl-card-info">News · 12 Mar 2026</div>
+        <h3 class="epfl-card-title">Standardizing perovskite aging measurements</h3>
+        <p class="epfl-card-text">Researchers establish a new protocol that will accelerate solar-cell development.</p>
+      </div>
+    </article>
+    <article class="epfl-card epfl-card-distinction">
+      <div class="epfl-card-img"></div>
+      <span class="epfl-card-flag"></span>
+      <div class="epfl-card-body">
+        <div class="epfl-card-info">Distinction</div>
+        <h3 class="epfl-card-title">EPFL ranked among top European universities</h3>
+        <p class="epfl-card-text">For the third consecutive year, EPFL maintains its position in the top tier.</p>
+      </div>
+    </article>
+  </div>
+</body></html>

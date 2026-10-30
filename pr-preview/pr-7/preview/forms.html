@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Form inputs" subtitle="Text, select, checkbox, radio" viewport="700x200" -->
+<html lang="en"><head><meta charset="utf-8"><title>Form Inputs</title>
+<link rel="stylesheet" href="../skills/epfl-design/css/epfl.css">
+<style>
+  body { margin: 0; padding: var(--space-4); font-size: var(--fs-sm); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3) var(--space-3); }
+  .stack { display: flex; flex-direction: column; gap: var(--space-2); padding-top: var(--space-3); }
+</style></head>
+<body>
+  <div class="grid">
+    <div><label class="epfl-label">Email</label><input class="epfl-input" type="email" placeholder="name@epfl.ch"></div>
+    <div><label class="epfl-label">Search</label><input class="epfl-input" type="text" placeholder="Search EPFL"></div>
+    <div><label class="epfl-label">Faculty</label><select class="epfl-select"><option>School of Engineering</option></select></div>
+    <div class="stack">
+      <label class="epfl-check"><input type="checkbox" checked> I agree to terms</label>
+      <label class="epfl-check"><input type="radio" name="r" checked> Option A</label>
+      <label class="epfl-check"><input type="radio" name="r"> Option B</label>
+    </div>
+  </div>
+</body></html>

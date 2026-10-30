@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Spacing" name="Radii" subtitle="Tight 2/4 px Swiss radii + pill" viewport="700x160" -->
+<html lang="en"><head><meta charset="utf-8"><title>Radii & Borders</title>
+<link rel="stylesheet" href="../skills/epfl-design/css/epfl.css">
+<style>
+  body { margin: 0; padding: 24px; font-family: var(--font-sans); }
+  .row { display: flex; gap: 16px; align-items: flex-end; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .box { width: 64px; height: 64px; background: var(--epfl-gray-100); border: 1px solid var(--border); }
+  .label { font-size: 11px; color: var(--fg-muted); font-family: var(--font-mono); }
+  .label b { display: block; color: var(--fg); font-family: var(--font-sans); font-weight: 700; font-size: 12px; }
+</style></head>
+<body>
+  <div class="row">
+    <div class="item"><div class="box" style="border-radius:0"></div><div class="label"><b>Square</b>0</div></div>
+    <div class="item"><div class="box" style="border-radius:2px"></div><div class="label"><b>Default</b>2px · --radius</div></div>
+    <div class="item"><div class="box" style="border-radius:4px"></div><div class="label"><b>Large</b>4px · --radius-lg</div></div>
+    <div class="item"><div class="box" style="border-radius:50%"></div><div class="label"><b>Circle</b>50%</div></div>
+    <div class="item"><div class="box" style="border-radius:10rem; width: 110px"></div><div class="label"><b>Pill</b>10rem (badges)</div></div>
+  </div>
+</body></html>

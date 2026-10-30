@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Spacing" name="Spacing scale" subtitle="4 / 8 / 16 / 24 / 32 / 48 / 96 px" viewport="700x240" -->
+<html lang="en"><head><meta charset="utf-8"><title>Spacing</title>
+<link rel="stylesheet" href="../skills/epfl-design/css/epfl.css">
+<style>
+  body { margin: 0; padding: 20px 24px; font-family: var(--font-sans); }
+  .row { display: flex; align-items: center; gap: 12px; padding: 4px 0; }
+  .label { flex: 0 0 80px; font-family: var(--font-mono); font-size: 11px; color: var(--fg-muted); }
+  .bar { background: var(--epfl-red); height: 14px; border-radius: 1px; }
+  .px { font-size: 11px; color: var(--fg-muted); font-family: var(--font-mono); }
+</style></head>
+<body>
+  <div class="row"><div class="label">space-1</div><div class="bar" style="width: 4px"></div><div class="px">4px / 0.25rem</div></div>
+  <div class="row"><div class="label">space-2</div><div class="bar" style="width: 8px"></div><div class="px">8px / 0.5rem</div></div>
+  <div class="row"><div class="label">space-3</div><div class="bar" style="width: 16px"></div><div class="px">16px / 1rem (base)</div></div>
+  <div class="row"><div class="label">space-4</div><div class="bar" style="width: 24px"></div><div class="px">24px / 1.5rem</div></div>
+  <div class="row"><div class="label">gutter</div><div class="bar" style="width: 32px"></div><div class="px">32px / grid gutter</div></div>
+  <div class="row"><div class="label">space-5</div><div class="bar" style="width: 48px"></div><div class="px">48px / 3rem</div></div>
+  <div class="row"><div class="label">space-6</div><div class="bar" style="width: 96px"></div><div class="px">96px / 6rem</div></div>
+</body></html>
