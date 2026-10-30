@@ -2,8 +2,8 @@
 /**
  * build-catalog.mjs — EPFL design-system catalog generator (zero runtime deps).
  *
- * Scans `preview/*.html` for their `@dsCard` metadata, the `examples/` index,
- * and the canonical brand rules in `AGENTS.md`, then emits a static `site/`
+ * Scans `preview/*.html` for their `@dsCard` metadata, the skill's `examples/`
+ * index, and the brand rules in the skill's `rules.md`, then emits a static `site/`
  * directory: one branded gallery page that embeds each specimen in an iframe at
  * its declared viewport. No bundler, no framework, Node built-ins only — true to
  * the repo's no-build philosophy. The catalog chrome is itself authored with
@@ -12,7 +12,7 @@
  *   node scripts/build-catalog.mjs   →   site/index.html (+ copied asset dirs)
  *
  * Asset dirs are copied into site/ preserving structure, so each preview's
- * repo-relative paths (`../css/epfl.css`, `../assets/…`) still resolve.
+ * repo-relative paths (`../skills/epfl-design/css/epfl.css`, …) still resolve.
  */
 import {
   readFileSync, writeFileSync, readdirSync,
@@ -23,9 +23,11 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = join(ROOT, 'site');
+// The skill folder: everything the skill ships (tokens, css, kits, assets, examples).
+const SKILL = 'skills/epfl-design';
 // The catalog is public: it never holds font files. Its pages load Suisse Int'l
 // from enac-it-fonts.epfl.ch (tokens/fonts.css), which refuses github.io → Arial.
-const COPY_DIRS = ['css', 'tokens', 'assets', 'preview', 'examples'];
+const COPY_DIRS = [`${SKILL}/css`, `${SKILL}/tokens`, `${SKILL}/assets`, `${SKILL}/examples`, 'preview'];
 // Foundations first, components last; any unknown group is appended after.
 const GROUP_ORDER = ['Brand', 'Colors', 'Type', 'Spacing', 'Components'];
 
@@ -76,21 +78,21 @@ function readPreviews() {
 
 // ── parse the examples/README.md index table ────────────────────────────────
 function readExamples() {
-  const path = join(ROOT, 'examples', 'README.md');
+  const path = join(ROOT, SKILL, 'examples', 'README.md');
   if (!existsSync(path)) return [];
   const rows = [];
   for (const line of readFileSync(path, 'utf8').split('\n')) {
     const m = line.match(/^\|\s*`([^`]+\.html)`\s*\|\s*([^|]+?)\s*\|\s*([^|]*?)\s*\|/);
-    if (m && existsSync(join(ROOT, 'examples', m[1]))) {
+    if (m && existsSync(join(ROOT, SKILL, 'examples', m[1]))) {
       rows.push({ file: m[1], title: m[2], notes: m[3] });
     }
   }
   return rows;
 }
 
-// ── parse the two rule sections out of AGENTS.md (single source of truth) ────
+// ── parse the two rule sections out of the skill's rules.md (single source of truth)
 function readRules() {
-  const md = readFileSync(join(ROOT, 'AGENTS.md'), 'utf8');
+  const md = readFileSync(join(ROOT, SKILL, 'rules.md'), 'utf8');
   const lines = md.split('\n');
   const section = (needle) => {
     const start = lines.findIndex(l => l.startsWith('## ') && l.includes(needle));
@@ -140,7 +142,7 @@ ${items}
 }
 
 function renderRuleList(items) {
-  if (!items.length) return '<li>See <code>AGENTS.md</code>.</li>';
+  if (!items.length) return '<li>See <code>rules.md</code>.</li>';
   return items.map(t => `<li>${mdInline(t)}</li>`).join('\n          ');
 }
 
@@ -149,11 +151,11 @@ function renderExamples(examples) {
   const cards = examples.map(e => `      <figure class="ds-card ds-card--wide">
         <figcaption class="ds-card__bar">
           <span class="ds-card__name">${escapeHtml(e.title)}</span>
-          <a class="ds-card__src" href="examples/${escapeHtml(e.file)}" target="_blank" rel="noopener">open full page →</a>
+          <a class="ds-card__src" href="${SKILL}/examples/${escapeHtml(e.file)}" target="_blank" rel="noopener">open full page →</a>
         </figcaption>
         ${e.notes ? `<p class="ds-card__notes">${escapeHtml(e.notes)}</p>` : ''}
         <div class="ds-card__frame ds-card__frame--page">
-          <iframe loading="lazy" src="examples/${escapeHtml(e.file)}" title="${escapeHtml(e.title)}" width="1280" height="760"></iframe>
+          <iframe loading="lazy" src="${SKILL}/examples/${escapeHtml(e.file)}" title="${escapeHtml(e.title)}" width="1280" height="760"></iframe>
         </div>
       </figure>`).join('\n');
   return `    <section class="ds-section" id="group-examples">
@@ -185,13 +187,13 @@ function renderPage({ cards, examples, rules }) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>EPFL Design System — catalog</title>
-  <link rel="stylesheet" href="css/epfl.css">
+  <link rel="stylesheet" href="${SKILL}/css/epfl.css">
   <link rel="stylesheet" href="catalog.css">
 </head>
 <body class="ds-body">
   <header class="ds-masthead">
     <div class="ds-masthead__brand">
-      <img class="ds-masthead__logo" src="assets/svg/epfl-logo.svg" alt="EPFL">
+      <img class="ds-masthead__logo" src="${SKILL}/assets/svg/epfl-logo.svg" alt="EPFL">
       <span class="ds-masthead__titles">
         <span class="ds-masthead__title">Design system</span>
         <span class="ds-masthead__org">ENAC IT4R · unofficial reference</span>
@@ -207,7 +209,7 @@ function renderPage({ cards, examples, rules }) {
       <h1 class="ds-intro__h1">EPFL design system catalog</h1>
       <p class="lead">The <strong>ENAC IT4R</strong> team's working reference for building
         EPFL-branded web UI — ${count} component and token cards, plus the brand rules and
-        reference screens. Every card renders the canonical <code>css/epfl.css</code> in
+        reference screens. Every card renders the canonical <code>${SKILL}/css/epfl.css</code> in
         isolation. Generated from <code>preview/*.html</code>; do not edit by hand.</p>
       <p class="ds-disclaimer">
         <strong>Unofficial.</strong> Maintained by the <strong>ENAC IT4R</strong> team at
@@ -236,7 +238,7 @@ function renderPage({ cards, examples, rules }) {
           </ul>
         </div>
       </div>
-      <p class="ds-rules__source">Parsed from <code>AGENTS.md</code> — the canonical rules file.</p>
+      <p class="ds-rules__source">Parsed from <code>${SKILL}/rules.md</code> — the canonical rules file.</p>
     </section>
 
 ${renderGroups(cards)}

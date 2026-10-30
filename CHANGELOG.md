@@ -10,6 +10,8 @@ versions follow [semver](https://semver.org/).
 - **Suisse Int'l font files** (`fonts/*.ttf`, the desktop fonts) and the `fonts/` directory. The font is licensed to EPFL and may not be redistributed from a public repository or its public catalog. Font files are now git-ignored everywhere, and the catalog build never copies them.
 
 ### Added
+- **Claude Code plugin marketplace** — `.claude-plugin/marketplace.json` and `plugin.json` (plugin `epfl`): `claude plugin marketplace add EPFL-ENAC/epfl-design-skill`, then `claude plugin install epfl@epfl-design-skill`.
+- **Release archive** — `make skill` zips the skill folder into `dist/epfl-design.zip` (and the same file as `.skill`); `.github/workflows/release.yml` publishes both on each `v*` tag, for claude.ai, Claude Desktop, Codex and projects.
 - **`tokens/fonts.css`** — Suisse Int'l `@font-face` from `https://enac-it-fonts.epfl.ch`, the ENAC IT4R font server, which serves `*.epfl.ch` origins only. `tokens/colors_and_type.css` `@import`s it, so `css/epfl.css` keeps loading the font with no setup. Faces: 400, 400 italic, 500, 600, 600 italic, 700 (no Light or Medium italic webfont yet). Local dev servers (`http://localhost:*`) get it from the EPFL network or VPN; elsewhere (`file://`, the public catalog, off VPN) text renders in Arial. `INSTALL.md` → Fonts lists the URLs and shows font-only use with an SCSS or CSS token.
 - **Published catalog** — `scripts/build-catalog.mjs`, a zero-dependency Node generator that reads the `@dsCard` comments in `preview/*.html`, the `examples/` index, and the brand rules in `AGENTS.md`, and emits a static `site/` gallery (each specimen embedded at its declared viewport; chrome built with `epfl.css` tokens). New npm scripts: `dev`, `build:catalog`, `screenshots`, `serve:catalog`.
 - **Live dev server** — `scripts/dev.mjs` (`npm run dev` / `make dev`): builds, serves on `:8080`, watches the source dirs, and live-reloads the browser via Server-Sent Events. Zero dependencies. A `Makefile` wraps the common tasks (`make help` lists them).
@@ -19,6 +21,8 @@ versions follow [semver](https://semver.org/).
 - `playwright` dev dependency (local screenshots only; the generator itself has no deps).
 
 ### Changed
+- **Installed as a plugin or an archive, never a clone or submodule.** The skill moves into a self-contained `skills/epfl-design/`: `SKILL.md`, `rules.md` (was the rules part of `AGENTS.md`), `design.md` (was the brand spec in `README.md`), `tokens/`, `css/`, `kits/`, `assets/`, `examples/`. `SKILL.md` frontmatter is now portable: `name` and a description under claude.ai's 200-character limit. Root `AGENTS.md` now holds the repo-maintenance rules; `README.md` the install per tool; `INSTALL.md` wiring into a project from the release archive.
+- `preview/` cards, the catalog scripts, the adherence linter globs and the Cursor rule follow the new paths. The catalog output is unchanged.
 - The `@dsCard` comment on a `preview/*.html` card is now **load-bearing** (it feeds the catalog), not an optional marker — documented in `AGENTS.md`, `CONTRIBUTING.md`.
 - `.gitignore` now excludes the generated `site/` and `screenshots/`.
 - **Maintainership made explicit** across the docs, the skill, and the catalog site: this is an *unofficial* reference maintained by the **EPFL ENAC IT4R** team, distilled from `epfl-si/elements` and not produced or endorsed by EPFL's central brand team.

@@ -29,4 +29,4 @@ Set Quasar's typography to Suisse Int'l (the `quasar.variables.scss` snippet set
 
 - **Radius:** Quasar's default radii are rounder than EPFL's 2px. Add `style="border-radius: var(--radius)"` or a small override on `.q-btn`, `.q-card`.
 - **Shadows:** EPFL cards are flat. Use `flat bordered` on `<q-card>` (borders > shadows).
-- **No lift/scale on hover, no gradients, sentence-case labels** — see `../../README.md`.
+- **No lift/scale on hover, no gradients, sentence-case labels** — see `../../design.md`.

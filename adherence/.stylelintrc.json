@@ -13,7 +13,7 @@
     }
   ],
   "ignoreFiles": [
-    "tokens/**",
+    "skills/epfl-design/tokens/**",
     "**/quasar.variables.scss",
     "**/epfl-quasar-brand.css"
   ]

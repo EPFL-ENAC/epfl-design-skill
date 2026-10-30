@@ -2,16 +2,10 @@
 
 # Claude Code notes
 
-The rules for this repo live in **`AGENTS.md`** (imported above) so every tool —
-Claude Code, OpenCode, Cursor — shares one source of truth. Don't duplicate rules
-here; edit `AGENTS.md`.
+Rules for maintaining this repo live in `AGENTS.md` (imported above), so every tool
+shares one source. The skill itself is `skills/epfl-design/`; this repo is also a
+Claude Code plugin marketplace (`.claude-plugin/`).
 
-Claude-Code-specific:
-
-- This repo is an **agent skill**: `SKILL.md` is the entry point and is
-  user-invocable (e.g. `/epfl-design`). When the skill triggers, follow the read
-  order in `AGENTS.md`.
-- There is **no build/test/`package.json`** for the design system itself. The only
-  optional tooling is the adherence linter in `adherence/` (run it to check your
-  output passes the brand rules). To preview, open `examples/*.html` or
-  `preview/*.html` in a browser.
+- There is no build for the design system itself. The optional tooling is the catalog
+  (`make dev`), the adherence linter (`npm run lint`) and `make skill`, which zips the
+  skill folder.

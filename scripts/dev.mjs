@@ -7,8 +7,7 @@
  *
  *   npm run dev          →   http://localhost:8080   (or PORT=3000 npm run dev)
  *
- * Edit any preview/, css/, tokens/, examples/, assets/ file (or AGENTS.md) and
- * the page reloads automatically.
+ * Edit any preview/ or skills/epfl-design/ file and the page reloads automatically.
  */
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
@@ -17,8 +16,8 @@ import { join, extname, normalize } from 'node:path';
 import { build, SITE, ROOT } from './build-catalog.mjs';
 
 const PORT = Number(process.env.PORT) || 8080;
-const WATCH_DIRS = ['preview', 'css', 'tokens', 'examples', 'assets', 'fonts'];
-const WATCH_FILES = ['AGENTS.md', 'scripts/build-catalog.mjs'];
+const WATCH_DIRS = ['preview', 'skills/epfl-design'];
+const WATCH_FILES = ['scripts/build-catalog.mjs'];
 
 const MIME = {
   '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript',
@@ -104,6 +103,6 @@ rebuild('initial');
 watchSources();
 server.listen(PORT, () => {
   console.log(`\n  EPFL catalog dev server → http://localhost:${PORT}`);
-  console.log('  Watching preview/, css/, tokens/, examples/, assets/, AGENTS.md — save to live-reload.');
+  console.log('  Watching preview/ and skills/epfl-design/ — save to live-reload.');
   console.log('  Ctrl-C to stop.\n');
 });

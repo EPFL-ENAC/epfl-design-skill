@@ -3,7 +3,7 @@
  * screenshot.mjs — render every catalog specimen to a PNG with Playwright.
  *
  * Serves the generated `site/` over a tiny in-process static server, then loads
- * each `preview/*.html` at its `@dsCard` viewport and each `examples/*.html`
+ * each `preview/*.html` at its `@dsCard` viewport and each skill example page
  * full-page, writing PNGs to `screenshots/`. Used by the PR workflow to upload a
  * visual artifact; also runnable locally.
  *
@@ -86,7 +86,7 @@ async function main() {
   }
   for (const e of readExamples()) {
     await shoot(browser, base, {
-      url: `/examples/${e.file}`,
+      url: `/skills/epfl-design/examples/${e.file}`,
       file: `example--${slug(e.file.replace(/\.html$/, ''))}.png`,
       viewport: { width: 1280, height: 900 },
       fullPage: true,

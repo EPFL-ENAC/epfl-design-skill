@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "epfl-design-skill",
+  "description": "EPFL design system for AI coding agents, by EPFL ENAC IT4R (unofficial).",
+  "owner": {
+    "name": "EPFL ENAC IT4R",
+    "url": "https://github.com/EPFL-ENAC"
+  },
+  "plugins": [
+    {
+      "name": "epfl",
+      "source": "./",
+      "description": "The epfl-design skill: EPFL brand rules and spec, tokens, CSS, framework kits and logos.",
+      "category": "design"
+    }
+  ]
+}

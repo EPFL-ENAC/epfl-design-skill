@@ -29,4 +29,4 @@ Set the app font to Suisse Int'l (loaded by `css/epfl.css`):
 
 - No elevation/shadows on cards (`variant="outlined"`); no hover lift/scale; no gradients.
 - Sentence case on all labels; never Title Case. No emoji.
-- See `../../README.md` for the full spec.
+- See `../../design.md` for the full spec.

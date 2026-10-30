@@ -1,7 +1,6 @@
 ---
 name: epfl-design
-description: Generates on-brand interfaces, components, and assets for EPFL (École polytechnique fédérale de Lausanne) — production code or throwaway prototypes. Use when building or styling any EPFL UI, working with the EPFL brand/design system, or when the user mentions EPFL pages, components, tokens, colors, or fonts. Ships design tokens, the Suisse Int'l webfont setup, framework-agnostic CSS, and Vue/Quasar/Vuetify/React/HTML component kits. Unofficial reference maintained by the EPFL ENAC IT4R team, distilled from EPFL's official guidelines (epfl-si/elements).
-user-invocable: true
+description: Use when building or styling any EPFL (École polytechnique fédérale de Lausanne) web UI, page, component or prototype: brand tokens, Suisse Int'l, the Vue/Quasar/Vuetify/React kits.
 ---
 
 # EPFL Design System
@@ -10,9 +9,9 @@ user-invocable: true
 > EPFL's official brand guidelines (`epfl-si/elements`), not produced or endorsed by EPFL's
 > central brand team. When this reference and the official guidelines disagree, those win.
 
-Read **`AGENTS.md`** first — it holds the operating rules and the enforced brand
-constraints. Then read **`README.md`** for the full content + visual fundamentals
-(the *why*). Then **study `examples/`** — real finished screens are the best guide
+Every path below is relative to this folder. Read **`rules.md`** first — it holds
+the operating rules and the enforced brand constraints. Then read **`design.md`**
+for the full content + visual fundamentals (the *why*). Then **study `examples/`** — real finished screens are the best guide
 to what EPFL output should look like. Pull in the rest as needed:
 `tokens/colors_and_type.css` (tokens), `css/` (the atomic CSS layer),
 `kits/<framework>/` (components for the project's stack — see `kits/README.md`),
@@ -36,5 +35,5 @@ questions, and act as an expert EPFL designer.
 - Hover changes color/border, never scales/lifts. Focus = 2px outline, 2px offset.
 - Signature hero = white text panel overlapping a photo. Active nav = 7×6px red dot.
 
-`CONTRIBUTING.md` covers how the team maintains/grows this; `INSTALL.md` covers
-pulling it into other projects.
+A pattern worth reusing belongs in the design system itself: tell the user, so the
+ENAC IT4R team can add it.
